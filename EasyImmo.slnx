@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../EasyImmoM/EasyImmoM/EasyImmoM.csproj" />
+  <Project Path="../Test3/Test3/Test3.csproj" />
+  <Project Path="BU/BU.csproj" />
+  <Project Path="Common/Common.csproj" />
+  <Project Path="DAL/DAL.csproj" />
+</Solution>
