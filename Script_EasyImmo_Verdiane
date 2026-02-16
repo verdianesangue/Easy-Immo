@@ -1,0 +1,328 @@
+-- cree la base de donnee
+CREATE DATABASE EasyImmo0;
+
+-- creation des tables
+-- TypeBien
+CREATE TABLE [dbo].[TypeBien](
+	[id_ty] [int] IDENTITY(1,1) NOT NULL,
+	[description_type] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[TypeBien] ADD  CONSTRAINT [PK_TypeBien] PRIMARY KEY CLUSTERED 
+(
+	[id_ty] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+-- StatusBien
+CREATE TABLE [dbo].[StatutBien](
+	[id_sta] [int] IDENTITY(1,1) NOT NULL,
+	[libelle_sta] [nvarchar](50) NULL,
+	[date_mise_jour_sta] [datetime2](7) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[StatutBien] ADD  CONSTRAINT [PK_StatutBien] PRIMARY KEY CLUSTERED 
+(
+	[id_sta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+-- Personnes
+CREATE TABLE [dbo].[Personnes](
+	[id_personne] [int] IDENTITY(1,1) NOT NULL,
+	[nom_personne] [nvarchar](50) NOT NULL,
+	[prenom_personne] [nvarchar](50) NOT NULL,
+	[email_personne] [nvarchar](50) NOT NULL,
+	[adresse_personne] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Personnes] ADD  CONSTRAINT [PK_Personnes] PRIMARY KEY CLUSTERED 
+(
+	[id_personne] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+-- DocumentBien
+CREATE TABLE [dbo].[DocumentBien](
+	[id_doc] [int] IDENTITY(1,1) NOT NULL,
+	[description_doc] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[DocumentBien] ADD  CONSTRAINT [PK_DocumentBien] PRIMARY KEY CLUSTERED 
+(
+	[id_doc] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+-- Plannning
+CREATE TABLE [dbo].[Planning](
+	[id_planning] [int] IDENTITY(1,1) NOT NULL,
+	[description_planning] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Planning] ADD  CONSTRAINT [PK_Planning] PRIMARY KEY CLUSTERED 
+(
+	[id_planning] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+-- TypeActivite
+CREATE TABLE [dbo].[TypeActivite](
+	[id_type] [int] IDENTITY(1,1) NOT NULL,
+	[description_type] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[TypeActivite] ADD  CONSTRAINT [PK_TypeActivite] PRIMARY KEY CLUSTERED 
+(
+	[id_type] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[TypeActivite]  WITH CHECK ADD  CONSTRAINT [FK_Activite_TypeActivite] FOREIGN KEY([id_type])
+REFERENCES [dbo].[TypeActivite] ([id_type])
+GO
+ALTER TABLE [dbo].[TypeActivite] CHECK CONSTRAINT [FK_Activite_TypeActivite]
+GO
+
+-- Proprietaire
+CREATE TABLE [dbo].[Proprietaire](
+	[id_pro] [int] IDENTITY(1,1) NOT NULL,
+	[type_pro] [nvarchar](50) NULL,
+	[id_personnes] [int] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Proprietaire] ADD  CONSTRAINT [PK_Proprietaire] PRIMARY KEY CLUSTERED 
+(
+	[id_pro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Proprietaire]  WITH NOCHECK ADD  CONSTRAINT [FK_Proprietaire_Personnes] FOREIGN KEY([id_pro])
+REFERENCES [dbo].[Personnes] ([id_personne])
+GO
+ALTER TABLE [dbo].[Proprietaire] CHECK CONSTRAINT [FK_Proprietaire_Personnes]
+GO
+
+
+-- Acheteur
+CREATE TABLE [dbo].[Acheteur](
+	[id_ach] [int] IDENTITY(1,1) NOT NULL,
+	[budget_max_ach] [decimal](18, 0) NULL,
+	[zone_souhaite_ach] [nvarchar](50) NULL,
+	[id_personne] [int] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Acheteur] ADD  CONSTRAINT [PK_Acheteur] PRIMARY KEY CLUSTERED 
+(
+	[id_ach] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Acheteur]  WITH NOCHECK ADD  CONSTRAINT [FK_Acheteur_Personnes] FOREIGN KEY([id_ach])
+REFERENCES [dbo].[Personnes] ([id_personne])
+GO
+ALTER TABLE [dbo].[Acheteur] CHECK CONSTRAINT [FK_Acheteur_Personnes]
+GO
+
+-- Locataire
+CREATE TABLE [dbo].[Locataire](
+	[id_locataire] [int] IDENTITY(1,1) NOT NULL,
+	[montant_max] [decimal](18, 0) NULL,
+	[id_personne] [int] NOT NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Locataire] ADD  CONSTRAINT [PK_Locataire] PRIMARY KEY CLUSTERED 
+(
+	[id_locataire] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Locataire]  WITH NOCHECK ADD  CONSTRAINT [FK_Locataire_Personnes] FOREIGN KEY([id_locataire])
+REFERENCES [dbo].[Personnes] ([id_personne])
+GO
+ALTER TABLE [dbo].[Locataire] CHECK CONSTRAINT [FK_Locataire_Personnes]
+GO
+
+
+-- Employe
+CREATE TABLE [dbo].[Employe](
+	[id_emp] [int] IDENTITY(1,1) NOT NULL,
+	[role_emp] [nvarchar](50) NULL,
+	[id_personne] [int] NOT NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Employe] ADD  CONSTRAINT [PK_employe] PRIMARY KEY CLUSTERED 
+(
+	[id_emp] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Employe]  WITH CHECK ADD  CONSTRAINT [FK_Employe_Personnes] FOREIGN KEY([id_emp])
+REFERENCES [dbo].[Personnes] ([id_personne])
+GO
+ALTER TABLE [dbo].[Employe] CHECK CONSTRAINT [FK_Employe_Personnes]
+GO
+
+
+-- OperationImmobiliere
+CREATE TABLE [dbo].[OperationImmobiliere](
+	[id_operation] [int] IDENTITY(1,1) NOT NULL,
+	[description_operation] [nvarchar](50) NULL,
+	[date_operation] [datetime2](7) NULL,
+	[id_emp] [int] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[OperationImmobiliere] ADD  CONSTRAINT [PK_OperationImmobiliere] PRIMARY KEY CLUSTERED 
+(
+	[id_operation] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[OperationImmobiliere]  WITH CHECK ADD  CONSTRAINT [FK_OperationImmobiliere_Employe] FOREIGN KEY([id_emp])
+REFERENCES [dbo].[Employe] ([id_emp])
+GO
+ALTER TABLE [dbo].[OperationImmobiliere] CHECK CONSTRAINT [FK_OperationImmobiliere_Employe]
+GO
+
+
+-- Bien
+CREATE TABLE [dbo].[Bien](
+	[id_bien] [int] IDENTITY(1,1) NOT NULL,
+	[prix_bien] [decimal](18, 0) NOT NULL,
+	[surfaces_bien] [decimal](18, 0) NULL,
+	[description_bien] [nvarchar](50) NULL,
+	[date_publication_bien] [datetime2](7) NULL,
+	[adresse_bien] [nvarchar](50) NULL,
+	[id_operation] [int] NULL,
+	[id_ty] [int] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Bien] ADD  CONSTRAINT [PK_Bien] PRIMARY KEY CLUSTERED 
+(
+	[id_bien] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Bien]  WITH CHECK ADD  CONSTRAINT [FK_Bien_OperationImmobiliere] FOREIGN KEY([id_operation])
+REFERENCES [dbo].[OperationImmobiliere] ([id_operation])
+GO
+ALTER TABLE [dbo].[Bien] CHECK CONSTRAINT [FK_Bien_OperationImmobiliere]
+GO
+ALTER TABLE [dbo].[Bien]  WITH CHECK ADD  CONSTRAINT [FK_Bien_TypeBien] FOREIGN KEY([id_ty])
+REFERENCES [dbo].[TypeBien] ([id_ty])
+GO
+ALTER TABLE [dbo].[Bien] CHECK CONSTRAINT [FK_Bien_TypeBien]
+GO
+
+
+-- Activite
+CREATE TABLE [dbo].[Activite](
+	[id_activite] [int] IDENTITY(1,1) NOT NULL,
+	[libelle_activite] [nvarchar](50) NULL,
+	[duree_activite] [time](7) NULL,
+	[date_activite] [datetime2](7) NULL,
+	[id_bien] [int] NOT NULL,
+	[id_type] [int] NOT NULL,
+	[id_planning] [int] NOT NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Activite] ADD  CONSTRAINT [PK_activite] PRIMARY KEY CLUSTERED 
+(
+	[id_activite] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Activite]  WITH CHECK ADD  CONSTRAINT [FK_Activite_Planning] FOREIGN KEY([id_activite])
+REFERENCES [dbo].[Activite] ([id_activite])
+GO
+ALTER TABLE [dbo].[Activite] CHECK CONSTRAINT [FK_Activite_Planning]
+GO
+
+
+
+CREATE TABLE [dbo].[EffectuerOperationPersonne](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id_operation] [int] NULL,
+	[id_personne] [int] NULL,
+	[type_personne] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[EffectuerOperationPersonne] ADD  CONSTRAINT [PK_EffectuerOperationPersonne] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[EffectuerOperationPersonne]  WITH CHECK ADD  CONSTRAINT [FK_EffectuerOperationPersonne_OperationImmobiliere] FOREIGN KEY([id])
+REFERENCES [dbo].[OperationImmobiliere] ([id_operation])
+GO
+ALTER TABLE [dbo].[EffectuerOperationPersonne] CHECK CONSTRAINT [FK_EffectuerOperationPersonne_OperationImmobiliere]
+GO
+ALTER TABLE [dbo].[EffectuerOperationPersonne]  WITH CHECK ADD  CONSTRAINT [FK_EffectuerOperationPersonne_Personnes] FOREIGN KEY([id])
+REFERENCES [dbo].[Personnes] ([id_personne])
+GO
+ALTER TABLE [dbo].[EffectuerOperationPersonne] CHECK CONSTRAINT [FK_EffectuerOperationPersonne_Personnes]
+GO
+
+
+CREATE TABLE [dbo].[PossederBienProprietaire](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id_bien] [int] NULL,
+	[id_pro] [int] NULL,
+	[annee_acquisition] [datetime2](7) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[PossederBienProprietaire] ADD  CONSTRAINT [PK_PossederBienProprietaire] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[PossederBienProprietaire]  WITH CHECK ADD  CONSTRAINT [FK_PossederBienProprietaire_Bien] FOREIGN KEY([id_bien])
+REFERENCES [dbo].[Bien] ([id_bien])
+GO
+ALTER TABLE [dbo].[PossederBienProprietaire] CHECK CONSTRAINT [FK_PossederBienProprietaire_Bien]
+GO
+ALTER TABLE [dbo].[PossederBienProprietaire]  WITH CHECK ADD  CONSTRAINT [FK_PossederBienProprietaire_Proprietaire] FOREIGN KEY([id_pro])
+REFERENCES [dbo].[Proprietaire] ([id_pro])
+GO
+ALTER TABLE [dbo].[PossederBienProprietaire] CHECK CONSTRAINT [FK_PossederBienProprietaire_Proprietaire]
+GO
+
+
+CREATE TABLE [dbo].[ParticiperActivitePersonne](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id_activite] [int] NULL,
+	[id_personne] [int] NULL,
+	[but] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[ParticiperActivitePersonne] ADD  CONSTRAINT [PK_ParticiperActivitePersonne] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[ParticiperActivitePersonne]  WITH CHECK ADD  CONSTRAINT [FK_ParticiperActivitePersonne_Activite] FOREIGN KEY([id])
+REFERENCES [dbo].[Activite] ([id_activite])
+GO
+ALTER TABLE [dbo].[ParticiperActivitePersonne] CHECK CONSTRAINT [FK_ParticiperActivitePersonne_Activite]
+GO
+ALTER TABLE [dbo].[ParticiperActivitePersonne]  WITH CHECK ADD  CONSTRAINT [FK_ParticiperActivitePersonne_Personnes] FOREIGN KEY([id])
+REFERENCES [dbo].[Personnes] ([id_personne])
+GO
+ALTER TABLE [dbo].[ParticiperActivitePersonne] CHECK CONSTRAINT [FK_ParticiperActivitePersonne_Personnes]
+GO
+
+
+CREATE TABLE [dbo].[HistoriqueStatusBien](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id_sta] [int] NULL,
+	[id_bien] [int] NULL,
+	[nombre_bien_visite] [int] NULL,
+	[nombre_bien_vendu] [int] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[HistoriqueStatusBien] ADD  CONSTRAINT [PK_HistoriqueStatusBien] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[HistoriqueStatusBien]  WITH NOCHECK ADD  CONSTRAINT [FK_HistoriqueStatusBien_Bien] FOREIGN KEY([id])
+REFERENCES [dbo].[Bien] ([id_bien])
+GO
+ALTER TABLE [dbo].[HistoriqueStatusBien] CHECK CONSTRAINT [FK_HistoriqueStatusBien_Bien]
+GO
+ALTER TABLE [dbo].[HistoriqueStatusBien]  WITH NOCHECK ADD  CONSTRAINT [FK_HistoriqueStatusBien_StatutBien] FOREIGN KEY([id])
+REFERENCES [dbo].[StatutBien] ([id_sta])
+GO
+ALTER TABLE [dbo].[HistoriqueStatusBien] CHECK CONSTRAINT [FK_HistoriqueStatusBien_StatutBien]
+GO
