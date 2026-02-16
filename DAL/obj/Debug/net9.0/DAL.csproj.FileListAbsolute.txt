@@ -1,0 +1,14 @@
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\bin\Debug\net9.0\DAL.deps.json
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\bin\Debug\net9.0\DAL.runtimeconfig.json
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\bin\Debug\net9.0\DAL.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\bin\Debug\net9.0\DAL.pdb
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.csproj.AssemblyReference.cache
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.AssemblyInfoInputs.cache
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.AssemblyInfo.cs
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\refint\DAL.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.pdb
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.genruntimeconfig.cache
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\ref\DAL.dll
