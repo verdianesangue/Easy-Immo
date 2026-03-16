@@ -1,0 +1,13 @@
+INSERT INTO TypeActivite (description_type) VALUES ('Visite');
+INSERT INTO TypeActivite (description_type) VALUES ('Demande info');
+
+INSERT INTO Planning (description_planning) VALUES ('Planning principal');
+
+INSERT INTO Activite (libelle_activite, date_activite, id_bien, id_type, id_planning)
+VALUES ('Visite client Dupont', GETDATE(), 2, 1, 1);
+
+INSERT INTO Activite (libelle_activite, date_activite, id_bien, id_type, id_planning)
+VALUES ('Demande info par téléphone', DATEADD(day, -5, GETDATE()), 2, 1, 1);
+
+INSERT INTO Activite (libelle_activite, date_activite, id_bien, id_type, id_planning)
+VALUES ('Mise en ligne annonce', DATEADD(day, -15, GETDATE()), 2, 1, 1);

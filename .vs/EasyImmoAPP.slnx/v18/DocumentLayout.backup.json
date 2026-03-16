@@ -3,16 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\fichiers\\insert_data.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\fichiers\\insert_data.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\viewsmodels\\propertypageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\viewsmodels\\propertypageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\views\\propertypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\views\\propertypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\easyimmomaui\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29BC0DCF-0BD8-6CE5-4368-9A5ED3FBBA95}|EasyImmoMaui\\EasyImmoMaui.csproj|solutionrelative:easyimmomaui\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5B68813F-23C2-8DF2-1B1F-9033A2893F62}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5B68813F-23C2-8DF2-1B1F-9033A2893F62}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2CBAD97E-6C1C-8940-36F8-F60C5C9A283D}|BU\\BU.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\bu\\services\\bienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CBAD97E-6C1C-8940-36F8-F60C5C9A283D}|BU\\BU.csproj|solutionrelative:bu\\services\\bienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\DAL\\DB\\EasyImmo0Context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DAL\\DB\\EasyImmo0Context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2CBAD97E-6C1C-8940-36F8-F60C5C9A283D}|BU\\BU.csproj|c:\\users\\utilisateur\\source\\repos\\easyimmoapp\\bu\\services\\activiteservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,20 +62,111 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EasyImmo0Context.cs",
-              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\DAL\\DB\\EasyImmo0Context.cs",
-              "RelativeDocumentMoniker": "DAL\\DB\\EasyImmo0Context.cs",
-              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\DAL\\DB\\EasyImmo0Context.cs",
-              "RelativeToolTip": "DAL\\DB\\EasyImmo0Context.cs",
+              "DocumentIndex": 0,
+              "Title": "insert_data.txt",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\fichiers\\insert_data.txt",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\fichiers\\insert_data.txt",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\fichiers\\insert_data.txt",
+              "RelativeToolTip": "EasyImmoMaui\\fichiers\\insert_data.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-03-16T10:21:44.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PropertyPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\Views\\PropertyPage.xaml",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\Views\\PropertyPage.xaml",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\Views\\PropertyPage.xaml",
+              "RelativeToolTip": "EasyImmoMaui\\Views\\PropertyPage.xaml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-16T09:25:00.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\MainPage.xaml",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\MainPage.xaml",
+              "RelativeToolTip": "EasyImmoMaui\\MainPage.xaml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAADIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-02T17:16:57.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PropertyPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\ViewsModels\\PropertyPageViewModel.cs",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\ViewsModels\\PropertyPageViewModel.cs",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\ViewsModels\\PropertyPageViewModel.cs",
+              "RelativeToolTip": "EasyImmoMaui\\ViewsModels\\PropertyPageViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-16T10:42:41.134Z",
+              "WhenOpened": "2026-03-16T09:25:15.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\App.xaml",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\App.xaml",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\App.xaml",
+              "RelativeToolTip": "EasyImmoMaui\\App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-16T09:26:31.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\MainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\MainPage.xaml.cs",
+              "RelativeToolTip": "EasyImmoMaui\\MainPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T08:53:38.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\MauiProgram.cs",
+              "RelativeToolTip": "EasyImmoMaui\\MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T17:25:58.718Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\AppShell.xaml",
+              "RelativeDocumentMoniker": "EasyImmoMaui\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\EasyImmoMaui\\AppShell.xaml",
+              "RelativeToolTip": "EasyImmoMaui\\AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-02T17:29:22.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "ActiviteServices.cs",
               "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\BU\\Services\\ActiviteServices.cs",
               "RelativeDocumentMoniker": "BU\\Services\\ActiviteServices.cs",
@@ -55,34 +174,31 @@
               "RelativeToolTip": "BU\\Services\\ActiviteServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-16T10:40:11.15Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-16T10:40:11.15Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "BienService.cs",
               "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\BU\\Services\\BienService.cs",
               "RelativeDocumentMoniker": "BU\\Services\\BienService.cs",
-              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\BU\\Services\\BienService.cs*",
-              "RelativeToolTip": "BU\\Services\\BienService.cs*",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\BU\\Services\\BienService.cs",
+              "RelativeToolTip": "BU\\Services\\BienService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-16T08:37:22.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-16T08:37:22.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
-              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\ConsoleApp1\\Program.cs*",
-              "RelativeToolTip": "ConsoleApp1\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Utilisateur\\source\\repos\\EasyImmoAPP\\ConsoleApp1\\Program.cs",
+              "RelativeToolTip": "ConsoleApp1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-16T00:31:44.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-16T00:31:44.499Z"
             }
           ]
         },

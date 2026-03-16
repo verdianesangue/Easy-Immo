@@ -1455,3 +1455,4 @@ C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-andr
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-android\android\assets\x86_64\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-android\android\assets\x86_64\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-android\android\assets\x86_64\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-android\EasyImmoMaui.sourcelink.json

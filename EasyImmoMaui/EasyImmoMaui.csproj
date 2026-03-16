@@ -75,4 +75,11 @@
 	  <ProjectReference Include="..\DAL\DAL.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="fichiers\" />
+	  <Folder Include="Retours\" />
+	  <Folder Include="ViewsModels\" />
+	  <Folder Include="Views\" />
+	</ItemGroup>
+
 </Project>

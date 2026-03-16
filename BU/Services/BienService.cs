@@ -1,4 +1,5 @@
 ﻿using DAL.DB;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,11 +15,15 @@ namespace BU.Services
                 return db.Biens.ToList();
             }
         }
-        public static DAL.DB.Bien? GetBiens(int bienId)
+        public static DAL.DB.Bien? GetBienDetail(int bienId)
         {
             using (var db = new DAL.DB.EasyImmo0Context())
             {
-                return db.Biens.SingleOrDefault(a => a.IdBien == bienId);
+                return db.Biens
+                    .Include(b => b.IdTyNavigation)
+                    .Include(b => b.HistoriqueStatusBien)
+                        .ThenInclude(h => h.Id1)
+                    .SingleOrDefault(b => b.IdBien == bienId);
             }
         }
     }

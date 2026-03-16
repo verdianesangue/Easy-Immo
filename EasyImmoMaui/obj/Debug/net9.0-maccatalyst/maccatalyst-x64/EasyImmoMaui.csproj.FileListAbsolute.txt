@@ -416,3 +416,4 @@ C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-macc
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\BU.pdb
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\DAL.pdb
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Common.pdb
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\EasyImmoMaui.sourcelink.json

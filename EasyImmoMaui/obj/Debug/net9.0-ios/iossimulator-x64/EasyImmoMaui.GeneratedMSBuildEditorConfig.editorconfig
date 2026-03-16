@@ -57,3 +57,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = EasyImmoMaui.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/Utilisateur/source/repos/EasyImmoAPP/EasyImmoMaui/Views/PropertyPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EasyImmoMaui.Views.PropertyPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PropertyPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PropertyPage.xaml

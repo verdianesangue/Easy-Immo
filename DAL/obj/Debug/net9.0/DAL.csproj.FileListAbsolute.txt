@@ -12,3 +12,4 @@ C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\refint\DAL.dl
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.pdb
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.genruntimeconfig.cache
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\ref\DAL.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\DAL\obj\Debug\net9.0\DAL.sourcelink.json

@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DAL.DB;
 
 namespace BU.Services
 {
-    internal class ActiviteServices
+    public class ActiviteServices
     {
+        public static List<Activite> GetActivitesByBien(int bienId)
+        {
+            using (var db = new EasyImmo0Context())
+            {
+                return db.Activites
+                    .Where(a => a.IdBien == bienId)
+                    .OrderByDescending(a => a.DateActivite)
+                    .ToList();
+            }
+        }
     }
 }

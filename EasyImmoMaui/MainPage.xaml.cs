@@ -1,24 +1,36 @@
-﻿namespace EasyImmoMaui
+﻿using BU.Services;
+using EasyImmoMaui.ViewsModels;
+using System.Collections.ObjectModel;
+
+namespace EasyImmoMaui
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
+            var premierBien = BienService.GetBiens().FirstOrDefault();
+            if (premierBien != null)
+                this.BindingContext = InitPropertyPageViewModel(premierBien.IdBien);
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        PropertyPageViewModel InitPropertyPageViewModel(int propertyID)
         {
-            count++;
+            var vm = new PropertyPageViewModel();
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            var bien = BienService.GetBienDetail(propertyID);
+            if (bien != null)
+            {
+                vm.IdBien = bien.IdBien;
+                vm.TypeBien = bien.IdTyNavigation?.DescriptionType ?? "Inconnu";
+                vm.Statut = bien.HistoriqueStatusBien?.Id1?.LibelleSta ?? "Inconnu";
+                vm.Description = bien.DescriptionBien ?? string.Empty;
+            }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            var activites = ActiviteServices.GetActivitesByBien(propertyID);
+            vm.Activites = new ObservableCollection<DAL.DB.Activite>(activites);
+
+            return vm;
         }
     }
 }
