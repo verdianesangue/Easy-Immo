@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             xmlns:bu="clr-namespace:BU.Services;assembly=BU"
+             x:Class="EasyImmoMaui.Views.ContratsView">
+
+    <ContentView.Resources>
+        <vm:TypeContratCouleurConverter x:Key="TypeContratCouleur"/>
+    </ContentView.Resources>
+
+    <Grid Padding="25" RowDefinitions="Auto,*" RowSpacing="20">
+
+        <!-- Bouton Ajouter -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="15">
+
+            <Label Grid.Column="0"
+                   Text="Contrats immobiliers"
+                   FontSize="16"
+                   TextColor="#555"
+                   VerticalOptions="Center"/>
+
+            <Border Grid.Column="1"
+                    BackgroundColor="#1E40AF"
+                    StrokeShape="RoundRectangle 25"
+                    Stroke="Transparent"
+                    Padding="20,12">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Ajouter"/>
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{x:Static helpers:Icons.Plus}"
+                           FontFamily="FontAwesome"
+                           FontSize="14"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Label Text="Nouveau contrat"
+                           TextColor="White"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Border>
+        </Grid>
+
+        <!-- Tableau des opérations -->
+        <Border Grid.Row="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 12"
+                Stroke="#E5E5E5"
+                Padding="0">
+            <Grid RowDefinitions="Auto,*">
+
+                <!-- En-tête du tableau -->
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="2*,Auto,2*,2*,2*,2*,2*,Auto"
+                      Padding="20,15"
+                      BackgroundColor="White"
+                      ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Description"  FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="1" Text="Type"         FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="2" Text="Date"         FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="3" Text="Bien"         FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="4" Text="Employé"      FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="5" Text="Acheteur/Loc" FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="6" Text="Vendeur"      FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="7" Text="Action"       FontAttributes="Bold" TextColor="Black" FontSize="14" WidthRequest="60"/>
+                </Grid>
+
+                <!-- Lignes du tableau -->
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Contrats}"
+                                SelectionMode="None">
+
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="40">
+                            <Label Text="Aucun contrat enregistré"
+                                   FontSize="16"
+                                   TextColor="#888"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="2*,Auto,2*,2*,2*,2*,2*,Auto"
+                                  Padding="20,12"
+                                  ColumnSpacing="10">
+
+                                <!-- Description -->
+                                <Label Grid.Column="0"
+                                       Text="{Binding Description}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Type (badge coloré) -->
+                                <Border Grid.Column="1"
+                                        BackgroundColor="{Binding TypeContrat, Converter={StaticResource TypeContratCouleur}}"
+                                        StrokeShape="RoundRectangle 10"
+                                        Stroke="Transparent"
+                                        Padding="8,3"
+                                        VerticalOptions="Center">
+                                    <Label Text="{Binding TypeContrat}"
+                                           FontSize="11"
+                                           TextColor="White"
+                                           FontAttributes="Bold"/>
+                                </Border>
+
+                                <!-- Date -->
+                                <Label Grid.Column="2"
+                                       Text="{Binding DateOperation, StringFormat='{0:dd/MM/yyyy}'}"
+                                       FontSize="13"
+                                       TextColor="#555"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Bien -->
+                                <Label Grid.Column="3"
+                                       Text="{Binding NomBien}"
+                                       FontSize="13"
+                                       TextColor="#1E40AF"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Employé -->
+                                <Label Grid.Column="4"
+                                       Text="{Binding NomAgent}"
+                                       FontSize="12"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"
+                                       LineBreakMode="TailTruncation"/>
+
+                                <!-- Acheteur ou Locataire -->
+                                <Label Grid.Column="5"
+                                       Text="{Binding NomParticipant}"
+                                       FontSize="12"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"
+                                       LineBreakMode="TailTruncation"/>
+
+                                <!-- Vendeur (propriétaire) -->
+                                <Label Grid.Column="6"
+                                       Text="{Binding NomProprietaire}"
+                                       FontSize="12"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"
+                                       LineBreakMode="TailTruncation"/>
+
+                                <!-- Actions -->
+                                <HorizontalStackLayout Grid.Column="7" Spacing="6" VerticalOptions="Center">
+
+                                    <!-- Bouton Détail -->
+                                    <Border BackgroundColor="#E8F5E9"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VoirDetail"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Info}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#2E7D32"/>
+                                    </Border>
+
+                                    <!-- Bouton Modifier -->
+                                    <Border BackgroundColor="#E3F2FD"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Modifier"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Modifier}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#1565C0"/>
+                                    </Border>
+
+                                    <!-- Bouton Supprimer -->
+                                    <Border BackgroundColor="#FFEBEE"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Supprimer"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Poubelle}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#C62828"/>
+                                    </Border>
+
+                                </HorizontalStackLayout>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentView>

@@ -11,15 +11,17 @@ public partial class Personne
 
     public string PrenomPersonne { get; set; } = null!;
 
-    public virtual Acheteur? Acheteur { get; set; }
+    public virtual ICollection<Acheteur> Acheteurs { get; set; } = new List<Acheteur>();
 
-    public virtual EffectuerOperationPersonne? EffectuerOperationPersonne { get; set; }
+    public virtual ICollection<EffectuerOperationPersonne> EffectuerOperationPersonnes { get; set; } = new List<EffectuerOperationPersonne>();
 
     public virtual Employe? Employe { get; set; }
 
-    public virtual Locataire? Locataire { get; set; }
+    public virtual ICollection<Locataire> Locataires { get; set; } = new List<Locataire>();
 
-    public virtual ParticiperActivitePersonne? ParticiperActivitePersonne { get; set; }
+    public virtual ICollection<ParticiperActivitePersonne> ParticiperActivitePersonnes { get; set; } = new List<ParticiperActivitePersonne>();
 
-    public virtual Proprietaire? Proprietaire { get; set; }
+    public virtual ICollection<Proprietaire> Proprietaires { get; set; } = new List<Proprietaire>();
+
+    public virtual ICollection<MoyenContact> MoyenContacts { get; set; } = new List<MoyenContact>();
 }

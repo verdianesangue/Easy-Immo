@@ -35,7 +35,9 @@ public partial class EasyImmo0Context : DbContext
 
     public virtual DbSet<MoyenContact> MoyenContacts { get; set; }
 
-    public virtual DbSet<OperationImmobiliere> OperationImmobilieres { get; set; }
+    public virtual DbSet<NoteBien> NoteBiens { get; set; }
+
+    public virtual DbSet<Contrat> Contrats { get; set; }
 
     public virtual DbSet<ParticiperActivitePersonne> ParticiperActivitePersonnes { get; set; }
 
@@ -65,9 +67,7 @@ public partial class EasyImmo0Context : DbContext
 
             entity.ToTable("Acheteur");
 
-            entity.Property(e => e.IdAch)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("id_ach");
+            entity.Property(e => e.IdAch).HasColumnName("id_ach");
             entity.Property(e => e.BudgetMaxAch)
                 .HasColumnType("decimal(18, 0)")
                 .HasColumnName("budget_max_ach");
@@ -76,9 +76,8 @@ public partial class EasyImmo0Context : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("zone_souhaite_ach");
 
-            entity.HasOne(d => d.IdAchNavigation).WithOne(p => p.Acheteur)
-                .HasForeignKey<Acheteur>(d => d.IdAch)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.Acheteurs)
+                .HasForeignKey(d => d.IdPersonne)
                 .HasConstraintName("FK_Acheteur_Personnes");
         });
 
@@ -97,6 +96,14 @@ public partial class EasyImmo0Context : DbContext
             entity.Property(e => e.LibelleActivite)
                 .HasMaxLength(50)
                 .HasColumnName("libelle_activite");
+
+            entity.HasOne(d => d.IdBienNavigation).WithMany(p => p.Activites)
+                .HasForeignKey(d => d.IdBien)
+                .HasConstraintName("FK_Activite_Bien");
+
+            entity.HasOne(d => d.IdTypeNavigation).WithMany(p => p.Activites)
+                .HasForeignKey(d => d.IdType)
+                .HasConstraintName("FK_Activite_TypeActivite");
         });
 
         modelBuilder.Entity<Adresse>(entity =>
@@ -130,13 +137,20 @@ public partial class EasyImmo0Context : DbContext
             entity.ToTable("Bien");
 
             entity.Property(e => e.IdBien).HasColumnName("id_bien");
+            entity.Property(e => e.DateChangementStatus)
+                .HasColumnType("datetime")
+                .HasColumnName("date_changement_status");
             entity.Property(e => e.DatePublicationBien).HasColumnName("date_publication_bien");
             entity.Property(e => e.DescriptionBien)
                 .HasMaxLength(50)
                 .HasColumnName("description_bien");
             entity.Property(e => e.IdAdresse).HasColumnName("id_adresse");
-            entity.Property(e => e.IdOperation).HasColumnName("id_operation");
+            entity.Property(e => e.IdContrat).HasColumnName("id_contrat");
+            entity.Property(e => e.IdStatus).HasColumnName("id_status");
             entity.Property(e => e.IdTy).HasColumnName("id_ty");
+            entity.Property(e => e.NomBien)
+                .HasMaxLength(100)
+                .HasColumnName("nom_bien");
             entity.Property(e => e.PrixBien)
                 .HasColumnType("decimal(18, 0)")
                 .HasColumnName("prix_bien");
@@ -148,9 +162,13 @@ public partial class EasyImmo0Context : DbContext
                 .HasForeignKey(d => d.IdAdresse)
                 .HasConstraintName("FK_Bien_Adresse");
 
-            entity.HasOne(d => d.IdOperationNavigation).WithMany(p => p.Biens)
-                .HasForeignKey(d => d.IdOperation)
-                .HasConstraintName("FK_Bien_OperationImmobiliere");
+            entity.HasOne(d => d.IdContratNavigation).WithMany(p => p.Biens)
+                .HasForeignKey(d => d.IdContrat)
+                .HasConstraintName("FK_Bien_Contrat");
+
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.Biens)
+                .HasForeignKey(d => d.IdStatus)
+                .HasConstraintName("FK_Bien_StatutBien");
 
             entity.HasOne(d => d.IdTyNavigation).WithMany(p => p.Biens)
                 .HasForeignKey(d => d.IdTy)
@@ -179,19 +197,19 @@ public partial class EasyImmo0Context : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("id");
-            entity.Property(e => e.IdOperation).HasColumnName("id_operation");
+            entity.Property(e => e.IdContrat).HasColumnName("id_contrat");
             entity.Property(e => e.IdPersonne).HasColumnName("id_personne");
             entity.Property(e => e.TypePersonne)
                 .HasMaxLength(50)
                 .HasColumnName("type_personne");
 
-            entity.HasOne(d => d.IdNavigation).WithOne(p => p.EffectuerOperationPersonne)
-                .HasForeignKey<EffectuerOperationPersonne>(d => d.Id)
+            entity.HasOne(d => d.IdContratNavigation).WithMany(p => p.EffectuerOperationPersonnes)
+                .HasForeignKey(d => d.IdContrat)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_EffectuerOperationPersonne_OperationImmobiliere");
+                .HasConstraintName("FK_EffectuerOperationPersonne_Contrat");
 
-            entity.HasOne(d => d.Id1).WithOne(p => p.EffectuerOperationPersonne)
-                .HasForeignKey<EffectuerOperationPersonne>(d => d.Id)
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.EffectuerOperationPersonnes)
+                .HasForeignKey(d => d.IdPersonne)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_EffectuerOperationPersonne_Personnes");
         });
@@ -211,7 +229,7 @@ public partial class EasyImmo0Context : DbContext
                 .HasColumnName("role_emp");
 
             entity.HasOne(d => d.IdEmpNavigation).WithOne(p => p.Employe)
-                .HasForeignKey<Employe>(d => d.IdEmp)
+                .HasForeignKey<Employe>(d => d.IdPersonne)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Employe_Personnes");
         });
@@ -245,16 +263,14 @@ public partial class EasyImmo0Context : DbContext
 
             entity.ToTable("Locataire");
 
-            entity.Property(e => e.IdLocataire)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("id_locataire");
+            entity.Property(e => e.IdLocataire).HasColumnName("id_locataire");
             entity.Property(e => e.IdPersonne).HasColumnName("id_personne");
             entity.Property(e => e.MontantMax)
                 .HasColumnType("decimal(18, 0)")
                 .HasColumnName("montant_max");
 
-            entity.HasOne(d => d.IdLocataireNavigation).WithOne(p => p.Locataire)
-                .HasForeignKey<Locataire>(d => d.IdLocataire)
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.Locataires)
+                .HasForeignKey(d => d.IdPersonne)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Locataire_Personnes");
         });
@@ -273,22 +289,29 @@ public partial class EasyImmo0Context : DbContext
             entity.Property(e => e.Valeur)
                 .HasMaxLength(255)
                 .HasColumnName("valeur");
+
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.MoyenContacts)
+                .HasForeignKey(d => d.IdPersonne)
+                .HasConstraintName("FK_MoyenContact_Personnes");
         });
 
-        modelBuilder.Entity<OperationImmobiliere>(entity =>
+        modelBuilder.Entity<Contrat>(entity =>
         {
-            entity.HasKey(e => e.IdOperation);
+            entity.HasKey(e => e.IdContrat);
 
-            entity.ToTable("OperationImmobiliere");
+            entity.ToTable("Contrat");
 
-            entity.Property(e => e.IdOperation).HasColumnName("id_operation");
+            entity.Property(e => e.IdContrat).HasColumnName("id_contrat");
+            entity.Property(e => e.TypeContrat)
+                .HasMaxLength(20)
+                .HasColumnName("type_contrat");
             entity.Property(e => e.DateOperation).HasColumnName("date_operation");
             entity.Property(e => e.DescriptionOperation)
                 .HasMaxLength(50)
                 .HasColumnName("description_operation");
             entity.Property(e => e.IdEmp).HasColumnName("id_emp");
 
-            entity.HasOne(d => d.IdEmpNavigation).WithMany(p => p.OperationImmobilieres)
+            entity.HasOne(d => d.IdEmpNavigation).WithMany(p => p.Contrats)
                 .HasForeignKey(d => d.IdEmp)
                 .HasConstraintName("FK_OperationImmobiliere_Employe");
         });
@@ -306,14 +329,12 @@ public partial class EasyImmo0Context : DbContext
             entity.Property(e => e.IdActivite).HasColumnName("id_activite");
             entity.Property(e => e.IdPersonne).HasColumnName("id_personne");
 
-            entity.HasOne(d => d.IdNavigation).WithOne(p => p.ParticiperActivitePersonne)
-                .HasForeignKey<ParticiperActivitePersonne>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+            entity.HasOne(d => d.IdActiviteNavigation).WithMany(p => p.ParticiperActivitePersonnes)
+                .HasForeignKey(d => d.IdActivite)
                 .HasConstraintName("FK_ParticiperActivitePersonne_Activite");
 
-            entity.HasOne(d => d.Id1).WithOne(p => p.ParticiperActivitePersonne)
-                .HasForeignKey<ParticiperActivitePersonne>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.ParticiperActivitePersonnes)
+                .HasForeignKey(d => d.IdPersonne)
                 .HasConstraintName("FK_ParticiperActivitePersonne_Personnes");
         });
 
@@ -371,17 +392,14 @@ public partial class EasyImmo0Context : DbContext
 
             entity.ToTable("Proprietaire");
 
-            entity.Property(e => e.IdPro)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("id_pro");
+            entity.Property(e => e.IdPro).HasColumnName("id_pro");
             entity.Property(e => e.IdPersonnes).HasColumnName("id_personnes");
             entity.Property(e => e.TypePro)
                 .HasMaxLength(50)
                 .HasColumnName("type_pro");
 
-            entity.HasOne(d => d.IdProNavigation).WithOne(p => p.Proprietaire)
-                .HasForeignKey<Proprietaire>(d => d.IdPro)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+            entity.HasOne(d => d.IdPersonnesNavigation).WithMany(p => p.Proprietaires)
+                .HasForeignKey(d => d.IdPersonnes)
                 .HasConstraintName("FK_Proprietaire_Personnes");
         });
 
@@ -418,6 +436,23 @@ public partial class EasyImmo0Context : DbContext
 
             entity.Property(e => e.IdTy).HasColumnName("id_ty");
             entity.Property(e => e.DescriptionType).HasColumnName("description_type");
+        });
+
+        modelBuilder.Entity<NoteBien>(entity =>
+        {
+            entity.HasKey(e => e.IdNote);
+
+            entity.ToTable("NoteBien");
+
+            entity.Property(e => e.IdNote).HasColumnName("id_note");
+            entity.Property(e => e.IdActivite).HasColumnName("id_activite");
+            entity.Property(e => e.IdBien).HasColumnName("id_bien");
+            entity.Property(e => e.IdPersonne).HasColumnName("id_personne");
+            entity.Property(e => e.Note).HasColumnName("note");
+            entity.Property(e => e.Commentaire)
+                .HasMaxLength(255)
+                .HasColumnName("commentaire");
+            entity.Property(e => e.DateNote).HasColumnName("date_note");
         });
 
         OnModelCreatingPartial(modelBuilder);

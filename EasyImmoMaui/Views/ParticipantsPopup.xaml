@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             x:Class="EasyImmoMaui.Views.ParticipantsPopup"
+             BackgroundColor="#80000000">
+
+    <Grid Padding="30">
+        <Border BackgroundColor="White"
+                StrokeShape="RoundRectangle 15"
+                Stroke="Transparent"
+                Padding="30"
+                MaximumWidthRequest="700"
+                MaximumHeightRequest="600"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+            <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="15">
+
+                <!-- Titre -->
+                <VerticalStackLayout Grid.Row="0" Spacing="5">
+                    <Label Text="Participants à l'activité"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#1E40AF" />
+                    <Label Text="{Binding TitreActivite}"
+                           FontSize="14"
+                           TextColor="#666"
+                           FontAttributes="Italic"/>
+                </VerticalStackLayout>
+
+                <!-- Ajouter un participant -->
+                <Label Grid.Row="1" 
+                       Text="Ajouter un participant" 
+                       FontAttributes="Bold" 
+                       TextColor="#333"
+                       FontSize="14"
+                       Margin="0,10,0,0"/>
+
+                <Grid Grid.Row="2" ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                    <Border Grid.Column="0"
+                            BackgroundColor="#F5F5F5"
+                            StrokeShape="RoundRectangle 8"
+                            Stroke="Transparent"
+                            Padding="15,5">
+                        <Picker ItemsSource="{Binding PersonnesDisponibles}"
+                                SelectedItem="{Binding PersonneSelectionnee}"
+                                ItemDisplayBinding="{Binding NomPersonne}"
+                                TextColor="#333"
+                                BackgroundColor="Transparent"
+                                Title="Sélectionner une personne..."/>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            BackgroundColor="#1E40AF"
+                            StrokeShape="RoundRectangle 8"
+                            Stroke="Transparent"
+                            Padding="15,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AjouterParticipant"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="+ Ajouter"
+                               TextColor="White"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+
+                <!-- Liste des participants -->
+                <Border Grid.Row="3"
+                        BackgroundColor="#FAFAFA"
+                        StrokeShape="RoundRectangle 8"
+                        Stroke="Transparent"
+                        Padding="10">
+
+                    <ScrollView>
+                        <CollectionView ItemsSource="{Binding Participants}"
+                                        EmptyView="Aucun participant pour l'instant.">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BackgroundColor="White"
+                                            StrokeShape="RoundRectangle 8"
+                                            Stroke="Transparent"
+                                            Padding="15,10"
+                                            Margin="0,5">
+                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                            <Label Grid.Column="0"
+                                                   Text="{x:Static helpers:Icons.Utilisateur}"
+                                                   FontFamily="FontAwesome"
+                                                   FontSize="18"
+                                                   TextColor="#1E40AF"
+                                                   VerticalOptions="Center"/>
+
+                                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="{Binding NomPersonne}"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#333"
+                                                       FontSize="14"/>
+                                                <Label Text="{Binding PrenomPersonne}"
+                                                       TextColor="#666"
+                                                       FontSize="12"/>
+                                            </VerticalStackLayout>
+
+                                            <Border Grid.Column="2"
+                                                    BackgroundColor="#FFEBEE"
+                                                    StrokeShape="RoundRectangle 6"
+                                                    Stroke="Transparent"
+                                                    Padding="10,8">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="RetirerParticipant"/>
+                                                </Border.GestureRecognizers>
+                                                <Label Text="{x:Static helpers:Icons.Poubelle}"
+                                                       FontFamily="FontAwesome"
+                                                       FontSize="14"
+                                                       TextColor="#C62828"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                </Border>
+
+                <!-- Bouton Fermer -->
+                <Border Grid.Row="4"
+                        BackgroundColor="#E0E0E0"
+                        StrokeShape="RoundRectangle 25"
+                        Stroke="Transparent"
+                        Padding="25,12"
+                        HorizontalOptions="End">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Fermer"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Fermer"
+                           TextColor="#333"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+                </Border>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

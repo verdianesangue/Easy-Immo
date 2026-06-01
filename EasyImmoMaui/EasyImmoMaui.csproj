@@ -60,6 +60,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+		<PackageReference Include="Microcharts.Maui" Version="1.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.11" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.11" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.11">
@@ -68,6 +70,7 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.119.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -76,10 +79,45 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="fichiers\" />
-	  <Folder Include="Retours\" />
-	  <Folder Include="ViewsModels\" />
-	  <Folder Include="Views\" />
+	  <Compile Update="Views\ActivitesFormulairePopup.xaml.cs">
+	    <DependentUpon>ActivitesFormulairePopup.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ActivitesView.xaml.cs">
+	    <DependentUpon>ActivitesView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\BienFormulairePopup.xaml.cs">
+	    <DependentUpon>BienFormulairePopup.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\BiensView.xaml.cs">
+	    <DependentUpon>BiensView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\ActivitesFormulairePopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ActivitesView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\BienFormulairePopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\BiensView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ClientFormulairePopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ClientsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ParticipantsPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TableauDeBordView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

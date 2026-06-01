@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             x:Class="EasyImmoMaui.Views.BienDetailPopup"
+             BackgroundColor="#80000000">
+
+    <ContentPage.Resources>
+        <vm:StringNotEmptyConverter x:Key="NotEmptyConverter"/>
+        <vm:StringEmptyConverter x:Key="EmptyConverter"/>
+        <vm:PhotoPathConverter x:Key="PhotoPathConverter"/>
+    </ContentPage.Resources>
+
+    <Grid Padding="30">
+        <Border BackgroundColor="White"
+                StrokeShape="RoundRectangle 15"
+                Stroke="Transparent"
+                Padding="30"
+                MaximumWidthRequest="800"
+                MaximumHeightRequest="700"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+            <Grid RowDefinitions="Auto,*,Auto" RowSpacing="20">
+
+                <!-- En-tête -->
+                <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Grid.Column="0" Spacing="5">
+                        <Label Text="{Binding NomBien}"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#1E40AF"/>
+                        <Label Text="{Binding StatutBien}"
+                               FontSize="13"
+                               TextColor="#666"/>
+                    </VerticalStackLayout>
+                    <Border Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            Padding="8,4">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Fermer"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{x:Static helpers:Icons.Croix}"
+                               FontFamily="FontAwesome"
+                               FontSize="18"
+                               TextColor="#666"/>
+                    </Border>
+                </Grid>
+
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout Spacing="20">
+
+                        <!-- Informations générales -->
+                        <Border BackgroundColor="#F8F9FF"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="#E0E7FF"
+                                Padding="20">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Informations générales"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E40AF"/>
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="15" RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="8">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="Type"        TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding TypeBien}" FontSize="13" FontAttributes="Bold" TextColor="#333"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="Prix"        TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Prix}" FontSize="13" FontAttributes="Bold" TextColor="#1E40AF"/>
+                                    <Label Grid.Row="2" Grid.Column="0" Text="Superficie"  TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Superficie}" FontSize="13" TextColor="#333"/>
+                                    <Label Grid.Row="3" Grid.Column="0" Text="Adresse"     TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Adresse}" FontSize="13" TextColor="#333"/>
+                                    <Label Grid.Row="4" Grid.Column="0" Text="Propriétaire" TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding Proprietaire}" FontSize="13" FontAttributes="Bold" TextColor="#333"/>
+                                </Grid>
+                                <Label Text="{Binding DateChangementStatut}"
+                                       FontSize="12"
+                                       TextColor="#999"
+                                       FontAttributes="Italic"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Photos -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Photos"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="#333"/>
+                            <CollectionView ItemsSource="{Binding Photos}"
+                                            EmptyView="Aucune photo."
+                                            ItemsLayout="HorizontalList"
+                                            HeightRequest="120">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border StrokeShape="RoundRectangle 8"
+                                                Stroke="#EEE"
+                                                Margin="5"
+                                                WidthRequest="120"
+                                                HeightRequest="110">
+                                            <Image Source="{Binding .}"
+                                                   Aspect="AspectFill"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+
+                        <!-- Historique des activités -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Historique des activités"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="#333"/>
+                            <CollectionView ItemsSource="{Binding Activites}"
+                                            EmptyView="Aucune activité enregistrée pour ce bien.">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="#FAFAFA"
+                                                StrokeShape="RoundRectangle 8"
+                                                Stroke="#EEE"
+                                                Padding="15,10"
+                                                Margin="0,4">
+                                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                                <Border Grid.Column="0"
+                                                        BackgroundColor="#E8F0FE"
+                                                        StrokeShape="RoundRectangle 6"
+                                                        Stroke="Transparent"
+                                                        Padding="8,5">
+                                                    <Label Text="{Binding NomType}"
+                                                           FontSize="11"
+                                                           FontAttributes="Bold"
+                                                           TextColor="#1E40AF"/>
+                                                </Border>
+                                                <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                                    <Label Text="{Binding LibelleActivite}"
+                                                           FontSize="13"
+                                                           FontAttributes="Bold"
+                                                           TextColor="#333"/>
+                                                    <Label Text="{Binding DateActivite, StringFormat='{0:dd/MM/yyyy à HH:mm}'}"
+                                                           FontSize="12"
+                                                           TextColor="#888"/>
+                                                    <Label Text="{Binding Participants}"
+                                                           FontSize="12"
+                                                           TextColor="#555"
+                                                           FontAttributes="Italic"/>
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Bouton Fermer -->
+                <Border Grid.Row="2"
+                        BackgroundColor="#E0E0E0"
+                        StrokeShape="RoundRectangle 25"
+                        Stroke="Transparent"
+                        Padding="25,12"
+                        HorizontalOptions="End">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Fermer"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Fermer"
+                           TextColor="#333"
+                           FontSize="14"
+                           FontAttributes="Bold"/>
+                </Border>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

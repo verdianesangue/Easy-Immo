@@ -4,11 +4,153 @@
         <name>EasyImmoMaui</name>
     </assembly>
     <members>
+        <member name="T:EasyImmoMaui.ViewModels.BienFormulaireViewModel">
+            <summary>
+            ViewModel pour la popup d'ajout et modification d'un bien.
+            Gère le formulaire avec ses listes déroulantes Type , Statut 
+            </summary>
+        </member>
+        <member name="T:EasyImmoMaui.ViewModels.BiensViewModel">
+            <summary>
+            ViewModel de la page Biens
+            Implémente INotifyPropertyChanged pour notifier la vue
+            quand les propriétés changent
+            </summary>
+        </member>
+        <member name="T:EasyImmoMaui.ViewModels.ClientFormulaireViewModel">
+            <summary>
+            ViewModel pour la popup d'ajout et modification d'un client.
+            Gère un formulaire avec 3 rôles possibles (Acheteur, Locataire, Propriétaire)
+            et des champs conditionnels qui apparaissent selon les rôles cochés.
+            </summary>
+        </member>
+        <member name="T:EasyImmoMaui.ViewModels.ClientsViewModel">
+            <summary>
+            ViewModel de la page Clients
+            </summary>
+        </member>
+        <member name="T:EasyImmoMaui.ViewModels.MenuActifConverter">
+            <summary>
+            Convertit "MenuActif" en couleur 
+            Si le menu actif correspond au nom du menu (passé en paramètre),
+            alors on retourne la couleue orange, sinon on retourne transparent.
+            </summary>
+        </member>
+        <member name="T:EasyImmoMaui.ViewModels.StatutCouleurFondConverter">
+            <summary>
+            Convertit un libellé de statut en couleur de fond
+            </summary>
+        </member>
+        <member name="T:EasyImmoMaui.ViewModels.TableauDeBordViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.NombreBiens">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.nombreBiens"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.NombreClients">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.nombreClients"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.NombreVisites">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.nombreVisites"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.NombreContrats">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.nombreContrats"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.TendanceBiens">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.tendanceBiens"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.TendanceClients">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.tendanceClients"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.TendanceVisites">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.tendanceVisites"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.TendanceContrats">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.tendanceContrats"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.GraphiqueVentes">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.graphiqueVentes"/>
+        </member>
+        <member name="P:EasyImmoMaui.ViewModels.TableauDeBordViewModel.GraphiqueRepartition">
+            <inheritdoc cref="F:EasyImmoMaui.ViewModels.TableauDeBordViewModel.graphiqueRepartition"/>
+        </member>
         <member name="T:EasyImmoMaui.Resource">
             <summary>
             Android Resource Designer class.
             Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreBiens">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreBiens" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreClients">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreClients" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreVisites">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreVisites" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreContrats">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreContrats" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TendanceBiens">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TendanceBiens" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TendanceClients">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TendanceClients" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TendanceVisites">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TendanceVisites" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TendanceContrats">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TendanceContrats" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.GraphiqueVentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "GraphiqueVentes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.GraphiqueRepartition">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "GraphiqueRepartition" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreBiens">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreBiens" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreClients">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreClients" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreVisites">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreVisites" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreContrats">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreContrats" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TendanceBiens">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TendanceBiens" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TendanceClients">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TendanceClients" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TendanceVisites">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TendanceVisites" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TendanceContrats">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TendanceContrats" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.GraphiqueVentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "GraphiqueVentes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.GraphiqueRepartition">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "GraphiqueRepartition" generated properties.</summary>
         </member>
     </members>
 </doc>

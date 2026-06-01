@@ -11,5 +11,7 @@ public partial class StatutBien
 
     public DateTime? DateMiseJourSta { get; set; }
 
+    public virtual ICollection<Bien> Biens { get; set; } = new List<Bien>();
+
     public virtual HistoriqueStatusBien? HistoriqueStatusBien { get; set; }
 }

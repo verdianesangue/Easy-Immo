@@ -11,7 +11,7 @@ public partial class Proprietaire
 
     public int? IdPersonnes { get; set; }
 
-    public virtual Personne IdProNavigation { get; set; } = null!;
+    public virtual Personne? IdPersonnesNavigation { get; set; }
 
     public virtual ICollection<PossederBienProprietaire> PossederBienProprietaires { get; set; } = new List<PossederBienProprietaire>();
 }

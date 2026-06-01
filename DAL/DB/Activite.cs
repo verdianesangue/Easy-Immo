@@ -17,9 +17,13 @@ public partial class Activite
 
     public int IdType { get; set; }
 
-    public int IdPlanning { get; set; }
+    public int? IdPlanning { get; set; }
 
-    public virtual ParticiperActivitePersonne? ParticiperActivitePersonne { get; set; }
+    public virtual Bien IdBienNavigation { get; set; } = null!;
+
+    public virtual TypeActivite IdTypeNavigation { get; set; } = null!;
+
+    public virtual ICollection<ParticiperActivitePersonne> ParticiperActivitePersonnes { get; set; } = new List<ParticiperActivitePersonne>();
 
     public virtual ICollection<Planning> Plannings { get; set; } = new List<Planning>();
 }

@@ -15,11 +15,17 @@ public partial class Bien
 
     public DateTime? DatePublicationBien { get; set; }
 
-    public int? IdOperation { get; set; }
+    public int? IdContrat { get; set; }
 
     public int? IdTy { get; set; }
 
     public int? IdAdresse { get; set; }
+
+    public string? NomBien { get; set; }
+
+    public int? IdStatus { get; set; }
+
+    public DateTime? DateChangementStatus { get; set; }
 
     public virtual ICollection<DocumentBien> DocumentBiens { get; set; } = new List<DocumentBien>();
 
@@ -27,9 +33,13 @@ public partial class Bien
 
     public virtual Adresse? IdAdresseNavigation { get; set; }
 
-    public virtual OperationImmobiliere? IdOperationNavigation { get; set; }
+    public virtual Contrat? IdContratNavigation { get; set; }
+
+    public virtual StatutBien? IdStatusNavigation { get; set; }
 
     public virtual TypeBien? IdTyNavigation { get; set; }
 
     public virtual ICollection<PossederBienProprietaire> PossederBienProprietaires { get; set; } = new List<PossederBienProprietaire>();
+
+    public virtual ICollection<Activite> Activites { get; set; } = new List<Activite>();
 }

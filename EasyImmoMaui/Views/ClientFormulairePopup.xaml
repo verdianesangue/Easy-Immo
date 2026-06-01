@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             x:Class="EasyImmoMaui.Views.ClientFormulairePopup"
+             BackgroundColor="#80000000">
+
+    <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+
+        <!-- Le formulaire -->
+        <Border BackgroundColor="White"
+                StrokeShape="RoundRectangle 15"
+                Stroke="Transparent"
+                Padding="0"
+                WidthRequest="650">
+
+            <Grid RowDefinitions="Auto,*,Auto">
+
+                <!-- L'entéte -->
+                <Grid Grid.Row="0"
+                      BackgroundColor="#F0F0F0"
+                      ColumnDefinitions="*,Auto"
+                      Padding="20,15">
+                    <Label Grid.Column="0"
+                           Text="{Binding Titre}"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#1a1a1a"
+                           VerticalOptions="Center"/>
+                    <Border Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            Padding="8,4">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Annuler"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{x:Static helpers:Icons.Croix}"
+                               FontFamily="FontAwesome"
+                               FontSize="18"
+                               TextColor="#666"/>
+                    </Border>
+                </Grid>
+
+                
+                <ScrollView Grid.Row="1" MaximumHeightRequest="600">
+                    <VerticalStackLayout Padding="30" Spacing="15">
+
+                        <!-- Toutes les informations du client -->
+                        <Label Text="Informations générales"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E40AF"/>
+
+                        <!-- Nom -->
+                        <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Nom"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Entry Text="{Binding Nom, Mode=TwoWay}"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#333"
+                                       FontSize="14"
+                                       Placeholder="Saisissez le nom"
+                                       PlaceholderColor="#AAA"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Prénom -->
+                        <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Prénom"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Entry Text="{Binding Prenom, Mode=TwoWay}"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#333"
+                                       FontSize="14"
+                                       Placeholder="Votre prénom"
+                                       PlaceholderColor="#AAA"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Email -->
+                        <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Email"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Entry Text="{Binding Email, Mode=TwoWay}"
+                                       Keyboard="Email"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#333"
+                                       FontSize="14"
+                                       Placeholder="Verdiane@mail.com"
+                                       PlaceholderColor="#AAA"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Téléphone -->
+                        <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Téléphone"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Entry Text="{Binding Telephone, Mode=TwoWay}"
+                                       Keyboard="Telephone"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#333"
+                                       FontSize="14"
+                                       Placeholder="+32 470 11 56 33"
+                                       PlaceholderColor="#AAA"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Les rôles du client -->
+                        <Label Text="Rôles du client"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E40AF"
+                               Margin="0,15,0,0"/>
+
+                        <!-- Acheteur -->
+                        <VerticalStackLayout Spacing="10">
+
+                            <HorizontalStackLayout Spacing="10">
+                                <CheckBox IsChecked="{Binding EstAcheteur, Mode=TwoWay}"
+                                          Color="#1E40AF"
+                                          VerticalOptions="Center"/>
+                                <Label Text="Acheteur"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+
+                            <!-- Champs spécifiques Acheteur  -->
+                            <VerticalStackLayout IsVisible="{Binding EstAcheteur}"
+                                                 Spacing="10"
+                                                 Margin="35,0,0,0">
+
+                                <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                                    <Label Grid.Column="0"
+                                           Text="Budget max (€)"
+                                           FontSize="13"
+                                           TextColor="#666"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End"/>
+                                    <Border Grid.Column="1"
+                                            Stroke="#CCC"
+                                            StrokeShape="RoundRectangle 6"
+                                            Padding="10,0">
+                                        <Entry Text="{Binding BudgetMaxAcheteur, Mode=TwoWay}"
+                                               Keyboard="Numeric"
+                                               BackgroundColor="Transparent"
+                                               TextColor="#333"
+                                               FontSize="14"
+                                               Placeholder="Entrez le budget"
+                                               PlaceholderColor="#AAA"/>
+                                    </Border>
+                                </Grid>
+
+                                <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                                    <Label Grid.Column="0"
+                                           Text="Zone souhaitée"
+                                           FontSize="13"
+                                           TextColor="#666"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End"/>
+                                    <Border Grid.Column="1"
+                                            Stroke="#CCC"
+                                            StrokeShape="RoundRectangle 6"
+                                            Padding="10,0">
+                                        <Entry Text="{Binding ZoneSouhaiteeAcheteur, Mode=TwoWay}"
+                                               BackgroundColor="Transparent"
+                                               TextColor="#333"
+                                               FontSize="14"
+                                               Placeholder="Entrez la zone souhaitée"
+                                               PlaceholderColor="#AAA"/>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+
+                        <!-- Locataire -->
+                        <VerticalStackLayout Spacing="10">
+
+                            <HorizontalStackLayout Spacing="10">
+                                <CheckBox IsChecked="{Binding EstLocataire, Mode=TwoWay}"
+                                          Color="#1E40AF"
+                                          VerticalOptions="Center"/>
+                                <Label Text="Locataire"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+
+                            <!-- Champs spécifiques Locataire -->
+                            <VerticalStackLayout IsVisible="{Binding EstLocataire}"
+                                                 Spacing="10"
+                                                 Margin="35,0,0,0">
+
+                                <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                                    <Label Grid.Column="0"
+                                           Text="Montant max (€)"
+                                           FontSize="13"
+                                           TextColor="#666"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End"/>
+                                    <Border Grid.Column="1"
+                                            Stroke="#CCC"
+                                            StrokeShape="RoundRectangle 6"
+                                            Padding="10,0">
+                                        <Entry Text="{Binding MontantMaxLocataire, Mode=TwoWay}"
+                                               Keyboard="Numeric"
+                                               BackgroundColor="Transparent"
+                                               TextColor="#333"
+                                               FontSize="14"
+                                               Placeholder="Montant maximum"
+                                               PlaceholderColor="#AAA"/>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+
+                        <!-- Propriétaire -->
+                        <VerticalStackLayout Spacing="10">
+
+                            <HorizontalStackLayout Spacing="10">
+                                <CheckBox IsChecked="{Binding EstProprietaire, Mode=TwoWay}"
+                                          Color="#1E40AF"
+                                          VerticalOptions="Center"/>
+                                <Label Text="Propriétaire" 
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+
+                            <!-- Champs spécifiques Propriétaire -->
+                            <VerticalStackLayout IsVisible="{Binding EstProprietaire}"
+                                                 Spacing="10"
+                                                 Margin="35,0,0,0">
+
+                                <Grid ColumnDefinitions="140,*" ColumnSpacing="15">
+                                    <Label Grid.Column="0"
+                                           Text="Type"
+                                           FontSize="13"
+                                           TextColor="#666"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End"/>
+                                    <Border Grid.Column="1"
+                                            Stroke="#CCC"
+                                            StrokeShape="RoundRectangle 6"
+                                            Padding="10,0">
+                                        <Picker ItemsSource="{Binding TypesProprietaire}"
+                                                SelectedItem="{Binding TypeProprietaire, Mode=TwoWay}"
+                                                BackgroundColor="Transparent"
+                                                TextColor="#333"
+                                                FontSize="14"
+                                                Title="Choisir le type"/>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Boutons -->
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="*,Auto,Auto"
+                      Padding="30,15,30,20"
+                      ColumnSpacing="10">
+
+                    <!-- Bouton Annuler -->
+                    <Border Grid.Column="1"
+                            BackgroundColor="#E0E0E0"
+                            StrokeShape="RoundRectangle 20"
+                            Stroke="Transparent"
+                            Padding="25,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Annuler"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Annuler"
+                               TextColor="#333"
+                               FontSize="14"
+                               FontAttributes="Bold"/>
+                    </Border>
+
+                    <!-- Bouton Enregistrer -->
+                    <Border Grid.Column="2"
+                            BackgroundColor="#1E40AF"
+                            StrokeShape="RoundRectangle 20"
+                            Stroke="Transparent"
+                            Padding="25,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Enregistrer"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Enregistrer"
+                               TextColor="White"
+                               FontSize="14"
+                               FontAttributes="Bold"/>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

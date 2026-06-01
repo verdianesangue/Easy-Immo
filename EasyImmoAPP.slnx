@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="BU/BU.csproj" />
   <Project Path="Common/Common.csproj" Id="5a7826d2-0505-4dd3-84ae-0ac29f0410f2" />
   <Project Path="ConsoleApp1/ConsoleApp1.csproj" />

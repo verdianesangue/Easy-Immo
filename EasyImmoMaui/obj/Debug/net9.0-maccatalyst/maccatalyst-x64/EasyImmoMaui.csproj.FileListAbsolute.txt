@@ -417,3 +417,12 @@ C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-macc
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\DAL.pdb
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Common.pdb
 C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\EasyImmoMaui.sourcelink.json
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\CommunityToolkit.Mvvm.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microcharts.Maui.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SkiaSharp.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SkiaSharp.Views.iOS.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SkiaSharp.Views.Maui.Controls.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SkiaSharp.Views.Maui.Core.dll
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libSkiaSharp.framework.zip
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\easyimmo_logo.png
+C:\Users\Utilisateur\source\repos\EasyImmoAPP\EasyImmoMaui\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\f\FontAwesomeSolid.otf

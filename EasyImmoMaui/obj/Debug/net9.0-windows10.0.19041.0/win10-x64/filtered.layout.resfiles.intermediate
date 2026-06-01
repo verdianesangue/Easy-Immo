@@ -1,3 +1,5 @@
+FontAwesomeSolid.otf
+FontAwesomeSolid.otf.otf
 OpenSans-Regular.ttf
 OpenSans-Semibold.ttf
 appicon.ico
@@ -51,6 +53,7 @@ dotnet_bot.scale-125.png
 dotnet_bot.scale-150.png
 dotnet_bot.scale-200.png
 dotnet_bot.scale-400.png
+easyimmo_logo.scale-100.png
 splashSplashScreen.scale-100.png
 splashSplashScreen.scale-125.png
 splashSplashScreen.scale-150.png

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             x:Class="EasyImmoMaui.Views.ParametresView">
+
+    <Grid Padding="25" RowDefinitions="Auto,Auto,*" RowSpacing="20">
+
+        <!-- Barre recherche et bouton Ajouter -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="15">
+            <Border Grid.Column="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 25"
+                    Stroke="#E5E5E5"
+                    Padding="20,5">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                    <Label Grid.Column="0"
+                           Text="{x:Static helpers:Icons.Loupe}"
+                           FontFamily="FontAwesome"
+                           FontSize="16" TextColor="#888"
+                           VerticalOptions="Center"/>
+                    <Entry Grid.Column="1"
+                           Placeholder="Rechercher un employé..."
+                           Text="{Binding TexteRecherche, Mode=TwoWay}"
+                           TextChanged="Rechercher"
+                           TextColor="Black"
+                           BackgroundColor="Transparent"
+                           FontSize="14"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="1"
+                    BackgroundColor="#1E40AF"
+                    StrokeShape="RoundRectangle 25"
+                    Stroke="Transparent"
+                    Padding="20,12">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Ajouter"/>
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{x:Static helpers:Icons.Plus}"
+                           FontFamily="FontAwesome"
+                           FontSize="14" TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Label Text="Ajouter un employé"
+                           TextColor="White" FontSize="14"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Border>
+        </Grid>
+
+        <!-- Tableau des employés -->
+        <Border Grid.Row="2"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 12"
+                Stroke="#E5E5E5"
+                Padding="0">
+            <Grid RowDefinitions="Auto,*">
+
+                <!-- En-tête -->
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="2*,2*,2*,Auto,Auto"
+                      Padding="20,15"
+                      BackgroundColor="White"
+                      ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Nom"    FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="1" Text="Email"  FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="2" Text="Rôle"   FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="3" Text="Statut" FontAttributes="Bold" TextColor="Black" FontSize="14" WidthRequest="70"/>
+                    <Label Grid.Column="4" Text="Action" FontAttributes="Bold" TextColor="Black" FontSize="14" WidthRequest="80"/>
+                </Grid>
+
+                <!-- Lignes -->
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Employes}"
+                                SelectionMode="None">
+
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="40">
+                            <Label Text="Aucun employé enregistré"
+                                   FontSize="16" TextColor="#888"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="2*,2*,2*,Auto,Auto"
+                                  Padding="20,12" ColumnSpacing="10">
+
+                                <!-- Nom complet -->
+                                <Label Grid.Column="0"
+                                       Text="{Binding NomComplet}"
+                                       FontSize="14" FontAttributes="Bold"
+                                       TextColor="#333" VerticalOptions="Center"/>
+
+                                <!-- Email -->
+                                <Label Grid.Column="1"
+                                       Text="{Binding Email}"
+                                       FontSize="13" TextColor="#555"
+                                       VerticalOptions="Center"
+                                       LineBreakMode="TailTruncation"/>
+
+                                <!-- Rôle -->
+                                <Label Grid.Column="2"
+                                       Text="{Binding Role}"
+                                       FontSize="13" TextColor="#555"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Statut -->
+                                <Border Grid.Column="3"
+                                        BackgroundColor="#E8F5E9"
+                                        StrokeShape="RoundRectangle 10"
+                                        Stroke="Transparent"
+                                        Padding="8,3"
+                                        VerticalOptions="Center"
+                                        WidthRequest="70">
+                                    <Label Text="Actif"
+                                           FontSize="11" TextColor="#2E7D32"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"/>
+                                </Border>
+
+                                <!-- Actions -->
+                                <HorizontalStackLayout Grid.Column="4" Spacing="6" VerticalOptions="Center">
+                                    <Border BackgroundColor="#E3F2FD"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent" Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Modifier"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Modifier}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14" TextColor="#1565C0"/>
+                                    </Border>
+                                    <Border BackgroundColor="#FFEBEE"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent" Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Supprimer"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Poubelle}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14" TextColor="#C62828"/>
+                                    </Border>
+                                </HorizontalStackLayout>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentView>

@@ -12,4 +12,6 @@ public partial class MoyenContact
     public string Valeur { get; set; } = null!;
 
     public int? IdPersonne { get; set; }
+
+    public virtual Personne? IdPersonneNavigation { get; set; }
 }

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             x:Class="EasyImmoMaui.Views.EmployeFormulairePopup"
+             BackgroundColor="#80000000">
+
+    <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+        <Border BackgroundColor="White"
+                StrokeShape="RoundRectangle 15"
+                Stroke="Transparent"
+                Padding="0"
+                WidthRequest="580">
+
+            <Grid RowDefinitions="Auto,*,Auto">
+
+                <!-- En-tête -->
+                <Grid Grid.Row="0" BackgroundColor="#F0F0F0"
+                      ColumnDefinitions="*,Auto" Padding="20,15">
+                    <Label Grid.Column="0" Text="{Binding Titre}"
+                           FontSize="18" FontAttributes="Bold"
+                           TextColor="#1a1a1a" VerticalOptions="Center"/>
+                    <Border Grid.Column="1" BackgroundColor="Transparent" Padding="8,4">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Annuler"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{x:Static helpers:Icons.Croix}"
+                               FontFamily="FontAwesome" FontSize="18" TextColor="#666"/>
+                    </Border>
+                </Grid>
+
+                <!-- Formulaire -->
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout Padding="30" Spacing="15">
+
+                        <!-- Nom -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0" Text="Nom" FontSize="14"
+                                   TextColor="#333" VerticalOptions="Center" HorizontalOptions="End"/>
+                            <Border Grid.Column="1" Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6" Padding="10,0">
+                                <Entry Text="{Binding Nom, Mode=TwoWay}"
+                                       BackgroundColor="Transparent" TextColor="#333"
+                                       Placeholder="Nom de famille" FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Prénom -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0" Text="Prénom" FontSize="14"
+                                   TextColor="#333" VerticalOptions="Center" HorizontalOptions="End"/>
+                            <Border Grid.Column="1" Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6" Padding="10,0">
+                                <Entry Text="{Binding Prenom, Mode=TwoWay}"
+                                       BackgroundColor="Transparent" TextColor="#333"
+                                       Placeholder="Prénom" FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Email -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0" Text="Email" FontSize="14"
+                                   TextColor="#333" VerticalOptions="Center" HorizontalOptions="End"/>
+                            <Border Grid.Column="1" Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6" Padding="10,0">
+                                <Entry Text="{Binding Email, Mode=TwoWay}"
+                                       Keyboard="Email"
+                                       BackgroundColor="Transparent" TextColor="#333"
+                                       Placeholder="email@agence.com" FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Téléphone -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0" Text="Téléphone" FontSize="14"
+                                   TextColor="#333" VerticalOptions="Center" HorizontalOptions="End"/>
+                            <Border Grid.Column="1" Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6" Padding="10,0">
+                                <Entry Text="{Binding Telephone, Mode=TwoWay}"
+                                       Keyboard="Telephone"
+                                       BackgroundColor="Transparent" TextColor="#333"
+                                       Placeholder="+32 470 00 00 00" FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Rôle -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0" Text="Rôle" FontSize="14"
+                                   TextColor="#333" VerticalOptions="Center" HorizontalOptions="End"/>
+                            <Border Grid.Column="1" Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6" Padding="10,0">
+                                <Entry Text="{Binding Role, Mode=TwoWay}"
+                                       BackgroundColor="Transparent" TextColor="#333"
+                                       Placeholder="Ex: Agent immobilier" FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Boutons -->
+                <Grid Grid.Row="2" ColumnDefinitions="*,Auto,Auto"
+                      Padding="30,15,30,20" ColumnSpacing="10">
+                    <Border Grid.Column="1" BackgroundColor="#E0E0E0"
+                            StrokeShape="RoundRectangle 20" Stroke="Transparent" Padding="25,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Annuler"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Annuler" TextColor="#333" FontSize="14" FontAttributes="Bold"/>
+                    </Border>
+                    <Border Grid.Column="2" BackgroundColor="#1E40AF"
+                            StrokeShape="RoundRectangle 20" Stroke="Transparent" Padding="25,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Enregistrer"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Enregistrer" TextColor="White" FontSize="14" FontAttributes="Bold"/>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

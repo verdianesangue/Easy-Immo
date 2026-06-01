@@ -8,4 +8,6 @@ public partial class TypeActivite
     public int IdType { get; set; }
 
     public string? DescriptionType { get; set; }
+
+    public virtual ICollection<Activite> Activites { get; set; } = new List<Activite>();
 }

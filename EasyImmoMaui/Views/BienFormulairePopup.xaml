@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             x:Class="EasyImmoMaui.Views.BienFormulairePopup"
+             BackgroundColor="#80000000">
+
+    <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+
+        <Border BackgroundColor="White"
+                StrokeShape="RoundRectangle 15"
+                Stroke="Transparent"
+                Padding="0"
+                WidthRequest="600">
+
+            <Grid RowDefinitions="Auto,*,Auto">
+
+                <!-- En-tête de la popup -->
+                <Grid Grid.Row="0"
+                      BackgroundColor="#F0F0F0"
+                      ColumnDefinitions="*,Auto"
+                      Padding="20,15">
+                    <Label Grid.Column="0"
+                           Text="{Binding Titre}"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#1a1a1a"
+                           VerticalOptions="Center"/>
+                    <Border Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            Padding="8,4">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Annuler"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{x:Static helpers:Icons.Croix}"
+                               FontFamily="FontAwesome"
+                               FontSize="18"
+                               TextColor="#666"/>
+                    </Border>
+                </Grid>
+
+                <!--  Formulaire  -->
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout Padding="30" Spacing="15">
+                        
+
+                        <!-- Nom -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Nom"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Entry Text="{Binding Nom, Mode=TwoWay}"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#333"
+                                       Placeholder="Entrez le nom"
+                                       FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Type  -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Type"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Picker ItemsSource="{Binding TypesDisponibles}"
+                                        SelectedItem="{Binding TypeSelectionne, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding DescriptionType}"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#333"
+                                        TitleColor="#888"
+                                        Title="Choisir un type"
+                                        FontSize="14"/>
+                            </Border>
+                        </Grid>
+                        <!-- Statut  -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                               Text="Statut"
+                               FontSize="14"
+                               TextColor="#333"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                Stroke="#CCC"
+                                StrokeShape="RoundRectangle 6"
+                                Padding="10,0">
+                              <Picker ItemsSource="{Binding StatutsDisponibles}"
+                                SelectedItem="{Binding StatutSelectionne, Mode=TwoWay}"
+                                ItemDisplayBinding="{Binding LibelleSta}"
+                                BackgroundColor="Transparent"
+                                TextColor="#333"
+                                TitleColor="#888"
+                                Title="Choisir un statut"
+                                FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Superficie -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Superficie (m²)"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Entry Text="{Binding Superficie, Mode=TwoWay}"
+                                       Keyboard="Numeric"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#333"
+                                       Placeholder="Entrez la superficie"
+                                       FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Prix -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Prix (€)"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Entry Text="{Binding Prix, Mode=TwoWay}"
+                                       Keyboard="Numeric"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#333"
+                                       Placeholder="Entrez le prix"
+                                       FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Adresse  -->
+                        
+                        <Label Text="Adresse"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E40AF"
+                           Margin="0,10,0,0"/>
+
+                            <!-- Numéro -->
+                       <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                       <Label Grid.Column="0"
+                       Text="Numéro"
+                       FontSize="14"
+                       TextColor="#333"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End"/>
+                       <Border Grid.Column="1"
+                        Stroke="#CCC"
+                        StrokeShape="RoundRectangle 6"
+                        Padding="10,0">
+                                <Entry Text="{Binding AdresseNumero, Mode=TwoWay}"
+                       BackgroundColor="Transparent"
+                       TextColor="#333"
+                       FontSize="14"
+                       Placeholder="Entrez le numéro"
+                       PlaceholderColor="#AAA"/>
+                            </Border>
+                            </Grid>
+
+                            <!-- Rue -->
+                            <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                               Text="Rue"
+                               FontSize="14"
+                               TextColor="#333"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                Stroke="#CCC"
+                                StrokeShape="RoundRectangle 6"
+                                Padding="10,0">
+                                <Entry Text="{Binding AdresseRue, Mode=TwoWay}"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#333"
+                                   FontSize="14"
+                                   Placeholder="Entrez la rue"
+                                   PlaceholderColor="#AAA"/>
+                                </Border>
+                            </Grid>
+
+                            <!-- Ville -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                               Text="Ville"
+                               FontSize="14"
+                               TextColor="#333"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                Stroke="#CCC"
+                                StrokeShape="RoundRectangle 6"
+                                Padding="10,0">
+                                <Entry Text="{Binding AdresseVille, Mode=TwoWay}"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#333"
+                                   FontSize="14"
+                                   Placeholder="Entrez la ville"
+                                   PlaceholderColor="#AAA"/>
+                            </Border>
+                        </Grid> 
+
+                        <!-- Code postal -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                               Text="Code postal"
+                               FontSize="14"
+                               TextColor="#333"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                Stroke="#CCC"
+                                StrokeShape="RoundRectangle 6"
+                                Padding="10,0">
+                                <Entry Text="{Binding AdresseCodePostal, Mode=TwoWay}"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#333"
+                                   FontSize="14"
+                                   Placeholder="Code postal"
+                                   PlaceholderColor="#AAA"/>
+                            </Border>
+                        </Grid>
+                        
+                        <!-- Pays -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                               Text="Pays"
+                               FontSize="14"
+                               TextColor="#333"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                Stroke="#CCC"
+                                StrokeShape="RoundRectangle 6"
+                                Padding="10,0">
+                                <Entry Text="{Binding AdressePays, Mode=TwoWay}"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#333"
+                                   FontSize="14"
+                                   Placeholder="Pays"
+                                   PlaceholderColor="#AAA"/>
+                            </Border>
+                        </Grid>
+
+
+                        <!-- Photos du bien -->
+                        <Label Text="Photos"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E40AF"
+                               Margin="0,5,0,0"/>
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <CollectionView Grid.Column="0"
+                                            ItemsSource="{Binding PhotosEnAttente}"
+                                            HeightRequest="80"
+                                            ItemsLayout="HorizontalList"
+                                            EmptyView="Aucune photo sélectionnée.">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border StrokeShape="RoundRectangle 6"
+                                                Stroke="#EEE"
+                                                Margin="4"
+                                                WidthRequest="75"
+                                                HeightRequest="70">
+                                            <Image Source="{Binding .}" Aspect="AspectFill"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Border Grid.Column="1"
+                                    BackgroundColor="#1E40AF"
+                                    StrokeShape="RoundRectangle 8"
+                                    Stroke="Transparent"
+                                    Padding="12,10"
+                                    VerticalOptions="Center">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AjouterPhoto"/>
+                                </Border.GestureRecognizers>
+                                <Label Text="{x:Static helpers:Icons.Photo}"
+                                       FontFamily="FontAwesome"
+                                       FontSize="18"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Propriétaire du bien -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Propriétaire"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <Picker ItemsSource="{Binding ProprietairesDisponibles}"
+                                        SelectedItem="{Binding ProprietaireSelectionne, Mode=TwoWay}"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#333"
+                                        TitleColor="#888"
+                                        Title="Choisir un propriétaire"
+                                        FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Description -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Description"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="End"
+                                  
+                                   Margin="0,8,0,0"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,5">
+                                <Editor Text="{Binding Description, Mode=TwoWay}"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#333"
+                                        HeightRequest="60"
+                                        Placeholder="Entrez la description du bien"
+                                        FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Date publication -->
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="15">
+                            <Label Grid.Column="0"
+                                   Text="Date publication"
+                                   FontSize="14"
+                                   TextColor="#333"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"/>
+                            <Border Grid.Column="1"
+                                    Stroke="#CCC"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="10,0">
+                                <DatePicker Date="{Binding DatePublication, Mode=TwoWay}"
+                                            BackgroundColor="Transparent"
+                                            TextColor="#333"
+                                            FontSize="14"/>
+                            </Border>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Boutons -->
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="*,Auto,Auto"
+                      Padding="30,15,30,20"
+                      ColumnSpacing="10">
+
+                    <!-- Bouton Annuler -->
+                    <Border Grid.Column="1"
+                            BackgroundColor="#E0E0E0"
+                            StrokeShape="RoundRectangle 20"
+                            Stroke="Transparent"
+                            Padding="25,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Annuler"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Annuler"
+                               TextColor="#333"
+                               FontSize="14"
+                               FontAttributes="Bold"/>
+                    </Border>
+
+                    <!-- Bouton Enregistrer -->
+                    <Border Grid.Column="2"
+                            BackgroundColor="#1E40AF"
+                            StrokeShape="RoundRectangle 20"
+                            Stroke="Transparent"
+                            Padding="25,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Enregistrer"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Enregistrer"
+                               TextColor="White"
+                               FontSize="14"
+                               FontAttributes="Bold"/>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

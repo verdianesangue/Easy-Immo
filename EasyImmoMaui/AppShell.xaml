@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="EasyImmoMaui.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:EasyImmoMaui"
-    Title="EasyImmoMaui">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:EasyImmoMaui"
+       x:Class="EasyImmoMaui.AppShell"
+       Shell.FlyoutBehavior="Disabled"
+       Title="EasyImmo">
 
     <ShellContent
-        Title="Home"
+        Title="EasyImmo"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="EasyImmoMaui.Views.TableauDeBordView">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <!-- Les cartes statistiques -->
+            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="15">
+
+                <!-- Carte biens -->
+                <Border Grid.Column="0"
+                        BackgroundColor="#5B4FE9"
+                        StrokeShape="RoundRectangle 15"
+                        Stroke="Transparent"
+                        Padding="18">
+                    <VerticalStackLayout Spacing="8">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#7A6FF0"
+                                    StrokeShape="RoundRectangle 8"
+                                    Stroke="Transparent"
+                                    Padding="8"
+                                    HorizontalOptions="Start">
+                                <Label Text="{x:Static helpers:Icons.Immeuble}"
+                                   FontFamily="FontAwesome"
+                                   FontSize="20"
+                                   TextColor="White"/>  
+                            </Border>
+                            <Border Grid.Column="1"
+                                    BackgroundColor="#7A6FF0"
+                                    StrokeShape="RoundRectangle 6"
+                                    Stroke="Transparent"
+                                    Padding="6,3"
+                                    VerticalOptions="Start">
+                                <Label Text="{Binding TendanceBiens}" TextColor="White" FontSize="11"/>
+                            </Border>
+                        </Grid>
+                        <Label Text="Biens" TextColor="White" FontSize="13" Opacity="0.9"/>
+                        <Label Text="{Binding NombreBiens}" TextColor="White" FontSize="32" FontAttributes="Bold"/>
+                        <Label Text="Actifs ce mois" TextColor="White" FontSize="11" Opacity="0.8"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Pour les Clients -->
+                <Border Grid.Column="1"
+                        BackgroundColor="#3EBD7E"
+                        StrokeShape="RoundRectangle 15"
+                        Stroke="Transparent"
+                        Padding="18">
+                    <VerticalStackLayout Spacing="8">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#5BCF95"
+                                    StrokeShape="RoundRectangle 8"
+                                    Stroke="Transparent"
+                                    Padding="8"
+                                    HorizontalOptions="Start">
+                                <Label Text="{x:Static helpers:Icons.Utilisateur}"
+                                   FontFamily="FontAwesome"
+                                   FontSize="20"
+                                   TextColor="White"/>  
+                            </Border>
+                            <Border Grid.Column="1"
+                                    BackgroundColor="#5BCF95"
+                                    StrokeShape="RoundRectangle 6"
+                                    Stroke="Transparent"
+                                    Padding="6,3"
+                                    VerticalOptions="Start">
+                                <Label Text="{Binding TendanceClients}" TextColor="White" FontSize="11"/>
+                            </Border>
+                        </Grid>
+                        <Label Text="Clients" TextColor="White" FontSize="13" Opacity="0.9"/>
+                        <Label Text="{Binding NombreClients}" TextColor="White" FontSize="32" FontAttributes="Bold"/>
+                        <Label Text="Inscrits" TextColor="White" FontSize="11" Opacity="0.8"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Carte visites -->
+                <Border Grid.Column="2"
+                        BackgroundColor="#B83EC9"
+                        StrokeShape="RoundRectangle 15"
+                        Stroke="Transparent"
+                        Padding="18">
+                    <VerticalStackLayout Spacing="8">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#C95BD8"
+                                    StrokeShape="RoundRectangle 8"
+                                    Stroke="Transparent"
+                                    Padding="8"
+                                    HorizontalOptions="Start">
+                                <Label Text="{x:Static helpers:Icons.Calendrier}"
+                                   FontFamily="FontAwesome"
+                                   FontSize="20"
+                                   TextColor="White"/>  
+                            </Border>
+                            <Border Grid.Column="1"
+                                    BackgroundColor="#C95BD8"
+                                    StrokeShape="RoundRectangle 6"
+                                    Stroke="Transparent"
+                                    Padding="6,3"
+                                    VerticalOptions="Start">
+                                <Label Text="{Binding TendanceVisites}" TextColor="White" FontSize="11"/>
+                            </Border>
+                        </Grid>
+                        <Label Text="Visites" TextColor="White" FontSize="13" Opacity="0.9"/>
+                        <Label Text="{Binding NombreVisites}" TextColor="White" FontSize="32" FontAttributes="Bold"/>
+                        <Label Text="Prévues" TextColor="White" FontSize="11" Opacity="0.8"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Carte contrats -->
+                <Border Grid.Column="3"
+                        BackgroundColor="#1FB6E8"
+                        StrokeShape="RoundRectangle 15"
+                        Stroke="Transparent"
+                        Padding="18">
+                    <VerticalStackLayout Spacing="8">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#4FC8F0"
+                                    StrokeShape="RoundRectangle 8"
+                                    Stroke="Transparent"
+                                    Padding="8"
+                                    HorizontalOptions="Start">
+                                <Label Text="{x:Static helpers:Icons.Document}"
+                                   FontFamily="FontAwesome"
+                                   FontSize="20"
+                                   TextColor="White"/>  
+                            </Border>
+                            <Border Grid.Column="1"
+                                    BackgroundColor="#4FC8F0"
+                                    StrokeShape="RoundRectangle 6"
+                                    Stroke="Transparent"
+                                    Padding="6,3"
+                                    VerticalOptions="Start">
+                                <Label Text="{Binding TendanceContrats}" TextColor="White" FontSize="11"/>
+                            </Border>
+                        </Grid>
+                        <Label Text="Contrats" TextColor="White" FontSize="13" Opacity="0.9"/>
+                        <Label Text="{Binding NombreContrats}" TextColor="White" FontSize="32" FontAttributes="Bold"/>
+                        <Label Text="En cours" TextColor="White" FontSize="11" Opacity="0.8"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <!--   Graphiques -->
+            <Grid ColumnDefinitions="2*,*" ColumnSpacing="15">
+
+                <!-- Évolution des ventes -->
+                <Border Grid.Column="0"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 12"
+                        Stroke="#E5E5E5"
+                        Padding="20">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Évolution des ventes" FontSize="16" FontAttributes="Bold"/>
+                        <Label Text="Cette année" FontSize="12" TextColor="#888"/>
+                        <microcharts:ChartView Chart="{Binding GraphiqueVentes}" HeightRequest="220"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Répartition par type -->
+                <Border Grid.Column="1"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 12"
+                        Stroke="#E5E5E5"
+                        Padding="20">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Répartition" FontSize="16" FontAttributes="Bold"/>
+                        <Label Text="Par type de bien" FontSize="12" TextColor="#888"/>
+                        <microcharts:ChartView Chart="{Binding GraphiqueRepartition}" HeightRequest="220"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <!-- Tableau qui affiche la liste des biens et utilisateurs -->
+            <Border BackgroundColor="White" StrokeShape="RoundRectangle 12"
+                    Stroke="#E5E5E5" Padding="0">
+                <Grid RowDefinitions="Auto,Auto">
+
+                    <!-- En-têtes -->
+                    <Grid Grid.Row="0" ColumnDefinitions="*,*,*,*,*" ColumnSpacing="0">
+                        <Border Grid.Column="0" BackgroundColor="#0F1729" Padding="12,10">
+                            <Label Text="Biens vendus" TextColor="White" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </Border>
+                        <Border Grid.Column="1" BackgroundColor="#0F1729" Padding="12,10">
+                            <Label Text="Biens loués" TextColor="White" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </Border>
+                        <Border Grid.Column="2" BackgroundColor="#0F1729" Padding="12,10">
+                            <Label Text="Propriétaires" TextColor="White" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" BackgroundColor="#0F1729" Padding="12,10">
+                            <Label Text="Locataires" TextColor="White" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </Border>
+                        <Border Grid.Column="4" BackgroundColor="#0F1729" Padding="12,10">
+                            <Label Text="Acheteurs" TextColor="White" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Listes -->
+                    <Grid Grid.Row="1" ColumnDefinitions="*,*,*,*,*" ColumnSpacing="0" HeightRequest="220">
+
+                        <CollectionView Grid.Column="0" ItemsSource="{Binding BiensVendus}">
+                            <CollectionView.EmptyView>
+                                <Label Text="—" TextColor="#AAA" FontSize="12" HorizontalOptions="Center" Margin="0,15"/>
+                            </CollectionView.EmptyView>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding NomBien}" FontSize="13" TextColor="#333" Padding="12,8" LineBreakMode="TailTruncation"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <CollectionView Grid.Column="1" ItemsSource="{Binding BiensLoues}">
+                            <CollectionView.EmptyView>
+                                <Label Text="—" TextColor="#AAA" FontSize="12" HorizontalOptions="Center" Margin="0,15"/>
+                            </CollectionView.EmptyView>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding NomBien}" FontSize="13" TextColor="#333" Padding="12,8" LineBreakMode="TailTruncation"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <CollectionView Grid.Column="2" ItemsSource="{Binding ListeProprietaires}">
+                            <CollectionView.EmptyView>
+                                <Label Text="—" TextColor="#AAA" FontSize="12" HorizontalOptions="Center" Margin="0,15"/>
+                            </CollectionView.EmptyView>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding NomComplet}" FontSize="13" TextColor="#333" Padding="12,8" LineBreakMode="TailTruncation"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <CollectionView Grid.Column="3" ItemsSource="{Binding ListeLocataires}">
+                            <CollectionView.EmptyView>
+                                <Label Text="—" TextColor="#AAA" FontSize="12" HorizontalOptions="Center" Margin="0,15"/>
+                            </CollectionView.EmptyView>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding NomComplet}" FontSize="13" TextColor="#333" Padding="12,8" LineBreakMode="TailTruncation"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <CollectionView Grid.Column="4" ItemsSource="{Binding ListeAcheteurs}">
+                            <CollectionView.EmptyView>
+                                <Label Text="—" TextColor="#AAA" FontSize="12" HorizontalOptions="Center" Margin="0,15"/>
+                            </CollectionView.EmptyView>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding NomComplet}" FontSize="13" TextColor="#333" Padding="12,8" LineBreakMode="TailTruncation"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </Grid>
+                </Grid>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

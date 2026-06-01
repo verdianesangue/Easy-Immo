@@ -4,14 +4,15 @@
     "includedFrameworks": [
       {
         "name": "Microsoft.NETCore.App",
-        "version": "9.0.13"
+        "version": "9.0.16"
       },
       {
         "name": "Microsoft.iOS",
-        "version": "26.0.9783"
+        "version": "26.2.9008"
       }
     ],
     "configProperties": {
+      "MVVMTOOLKIT_ENABLE_INOTIFYPROPERTYCHANGING_SUPPORT": true,
       "Microsoft.Extensions.DependencyInjection.VerifyOpenGenericServiceTrimmability": true,
       "System.AggressiveAttributeTrimming": true,
       "System.ComponentModel.TypeConverter.EnableUnsafeBinaryFormatterInDesigntimeLicenseContextSerialization": false,

@@ -13,7 +13,7 @@ public partial class ParticiperActivitePersonne
 
     public string? But { get; set; }
 
-    public virtual Personne Id1 { get; set; } = null!;
+    public virtual Activite? IdActiviteNavigation { get; set; }
 
-    public virtual Activite IdNavigation { get; set; } = null!;
+    public virtual Personne? IdPersonneNavigation { get; set; }
 }

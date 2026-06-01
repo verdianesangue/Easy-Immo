@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             x:Class="EasyImmoMaui.Views.ContratDetailPopup"
+             BackgroundColor="#80000000">
+
+    <Grid Padding="30">
+        <Border BackgroundColor="White"
+                StrokeShape="RoundRectangle 15"
+                Stroke="Transparent"
+                Padding="30"
+                MaximumWidthRequest="650"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+            <Grid RowDefinitions="Auto,*,Auto" RowSpacing="20">
+
+                <!-- En-tête -->
+                <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Grid.Column="0" Spacing="4">
+                        <Label Text="{Binding Description}"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#1E40AF"/>
+                        <Label Text="{Binding TypeContrat}"
+                               FontSize="13"
+                               TextColor="#666"/>
+                    </VerticalStackLayout>
+                    <Border Grid.Column="1" BackgroundColor="Transparent" Padding="8,4">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Fermer"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{x:Static helpers:Icons.Croix}"
+                               FontFamily="FontAwesome"
+                               FontSize="18"
+                               TextColor="#666"/>
+                    </Border>
+                </Grid>
+
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout Spacing="15">
+
+                        <!-- Informations du contrat -->
+                        <Border BackgroundColor="#F8F9FF" StrokeShape="RoundRectangle 10"
+                                Stroke="#E0E7FF" Padding="20">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Contrat"
+                                       FontSize="15" FontAttributes="Bold" TextColor="#1E40AF"/>
+                                <Grid ColumnDefinitions="140,*" ColumnSpacing="15"
+                                      RowDefinitions="Auto,Auto" RowSpacing="8">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="Date"      TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateContrat}" FontSize="13" FontAttributes="Bold" TextColor="#333"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="Agent"     TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding NomAgent}" FontSize="13" FontAttributes="Bold" TextColor="#333"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Bien -->
+                        <Border BackgroundColor="#F0FDF4" StrokeShape="RoundRectangle 10"
+                                Stroke="#BBF7D0" Padding="20">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Bien concerné"
+                                       FontSize="15" FontAttributes="Bold" TextColor="#15803D"/>
+                                <Grid ColumnDefinitions="140,*" ColumnSpacing="15"
+                                      RowDefinitions="Auto,Auto,Auto" RowSpacing="8">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="Nom"      TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding NomBien}" FontSize="13" FontAttributes="Bold" TextColor="#333"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="Adresse"  TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Adresse}" FontSize="13" TextColor="#333"/>
+                                    <Label Grid.Row="2" Grid.Column="0" Text="Prix"     TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Prix}" FontSize="13" FontAttributes="Bold" TextColor="#1E40AF"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Parties signataires -->
+                        <Border BackgroundColor="#FFFBEB" StrokeShape="RoundRectangle 10"
+                                Stroke="#FDE68A" Padding="20">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Parties signataires"
+                                       FontSize="15" FontAttributes="Bold" TextColor="#B45309"/>
+                                <Grid ColumnDefinitions="140,*" ColumnSpacing="15"
+                                      RowDefinitions="Auto,Auto" RowSpacing="8">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding LabelParticipant}" TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding NomParticipantPrincipal}" FontSize="13" FontAttributes="Bold" TextColor="#333"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="Propriétaire" TextColor="#888" FontSize="13"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding NomProprietaire}" FontSize="13" FontAttributes="Bold" TextColor="#333"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Bouton Fermer -->
+                <Border Grid.Row="2"
+                        BackgroundColor="#E0E0E0"
+                        StrokeShape="RoundRectangle 25"
+                        Stroke="Transparent"
+                        Padding="25,12"
+                        HorizontalOptions="End">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Fermer"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Fermer" TextColor="#333" FontSize="14" FontAttributes="Bold"/>
+                </Border>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

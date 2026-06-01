@@ -13,5 +13,5 @@ public partial class Acheteur
 
     public int? IdPersonne { get; set; }
 
-    public virtual Personne IdAchNavigation { get; set; } = null!;
+    public virtual Personne? IdPersonneNavigation { get; set; }
 }

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             x:Class="EasyImmoMaui.Views.ActivitesView">
+
+    <Grid Padding="25" RowSpacing="20" RowDefinitions="Auto,*">
+
+        <!-- Barre de recherche et bouton ajouter -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="15">
+
+            <Border Grid.Column="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 30"
+                    Stroke="Transparent"
+                    Padding="20,12">
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{x:Static helpers:Icons.Loupe}"
+                           FontFamily="FontAwesome"
+                           FontSize="16"
+                           TextColor="#888"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Rechercher une activité..."
+                           Text="{Binding Recherche, Mode=TwoWay}"
+                           TextChanged="Rechercher"
+                           BackgroundColor="Transparent"
+                           TextColor="#333"
+                           PlaceholderColor="#888"
+                           FontSize="14"
+                           WidthRequest="500"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Border>
+
+            <Border Grid.Column="1"
+                    BackgroundColor="#1E40AF"
+                    StrokeShape="RoundRectangle 30"
+                    Stroke="Transparent"
+                    Padding="25,12">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Ajouter"/>
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{x:Static helpers:Icons.Plus}"
+                           FontFamily="FontAwesome"
+                           FontSize="14"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Label Text="Ajouter une activité"
+                           TextColor="White"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 12"
+                Stroke="Transparent"
+                Padding="0">
+
+            <Grid RowDefinitions="Auto,*">
+
+                <!-- En-tête -->
+                <Grid Grid.Row="0"
+                      BackgroundColor="White"
+                      ColumnDefinitions="2.5*,2*,2*,1.2*,2*,Auto"
+                      Padding="20,15"
+                      ColumnSpacing="15">
+                    <Label Grid.Column="0" Text="Libellé"      FontAttributes="Bold" FontSize="14" TextColor="#333"/>
+                    <Label Grid.Column="1" Text="Type"         FontAttributes="Bold" FontSize="14" TextColor="#333"/>
+                    <Label Grid.Column="2" Text="Date / Heure" FontAttributes="Bold" FontSize="14" TextColor="#333"/>
+                    <Label Grid.Column="3" Text="Durée"        FontAttributes="Bold" FontSize="14" TextColor="#333"/>
+                    <Label Grid.Column="4" Text="Bien"         FontAttributes="Bold" FontSize="14" TextColor="#333"/>
+                    <Label Grid.Column="5" Text="Action"       FontAttributes="Bold" FontSize="14" TextColor="#333"
+                           HorizontalOptions="Center"
+                           MinimumWidthRequest="140"/>
+                </Grid>
+
+                <BoxView Grid.Row="0"
+                         HeightRequest="1"
+                         BackgroundColor="#EEE"
+                         VerticalOptions="End"/>
+
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Activites}"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="2.5*,2*,2*,1.2*,2*,Auto"
+                                  Padding="20,15"
+                                  ColumnSpacing="15">
+
+                                <Label Grid.Column="0"
+                                       Text="{Binding LibelleActivite}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"/>
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding NomType}"
+                                       FontSize="13"
+                                       TextColor="#1E40AF"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"/>
+
+                                <Label Grid.Column="2"
+                                       Text="{Binding DateActivite, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
+                                       FontSize="13"
+                                       TextColor="#555"
+                                       VerticalOptions="Center"/>
+
+                                <Label Grid.Column="3"
+                                       Text="{Binding DureeActivite, StringFormat='{0:HH\\:mm}'}"
+                                       FontSize="13"
+                                       TextColor="#555"
+                                       VerticalOptions="Center"/>
+
+                                <Label Grid.Column="4"
+                                       Text="{Binding NomBien}"
+                                       FontSize="13"
+                                       TextColor="#333"
+                                       VerticalOptions="Center"/>
+
+                                <HorizontalStackLayout Grid.Column="5"
+                                                       Spacing="8"
+                                                       VerticalOptions="Center">
+
+                                    <!-- Bouton Participants -->
+                                    <Border BackgroundColor="#E3F2FD"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="10,8">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VoirParticipants"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Utilisateur}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#1565C0"/>
+                                    </Border>
+
+                                    <!-- Bouton modifier -->
+                                    <Border BackgroundColor="#FFF3E0"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="10,8">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Modifier"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Modifier}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#F57C00"/>
+                                    </Border>
+
+                                    <!-- Bouton supprimer -->
+                                    <Border BackgroundColor="#FFEBEE"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="10,8">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Supprimer"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Poubelle}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#C62828"/>
+                                    </Border>
+
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentView>

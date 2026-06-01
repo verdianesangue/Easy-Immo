@@ -11,5 +11,5 @@ public partial class Locataire
 
     public int IdPersonne { get; set; }
 
-    public virtual Personne IdLocataireNavigation { get; set; } = null!;
+    public virtual Personne IdPersonneNavigation { get; set; } = null!;
 }

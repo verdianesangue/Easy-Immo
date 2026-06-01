@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BU.Services;
+using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace EasyImmoMaui
 {
@@ -9,10 +11,12 @@ namespace EasyImmoMaui
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseSkiaSharp()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("FontAwesomeSolid.otf", "FontAwesome");
                 });
 
 #if DEBUG
@@ -23,4 +27,3 @@ namespace EasyImmoMaui
         }
     }
 }
-

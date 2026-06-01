@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace DAL.DB;
@@ -13,5 +13,5 @@ public partial class Employe
 
     public virtual Personne IdEmpNavigation { get; set; } = null!;
 
-    public virtual ICollection<OperationImmobiliere> OperationImmobilieres { get; set; } = new List<OperationImmobiliere>();
+    public virtual ICollection<Contrat> Contrats { get; set; } = new List<Contrat>();
 }

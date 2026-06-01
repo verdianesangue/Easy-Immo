@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             xmlns:dal="clr-namespace:DAL.DB;assembly=DAL"
+             x:Class="EasyImmoMaui.Views.BiensView">
+
+    <ContentView.Resources>
+        <vm:StringNotEmptyConverter x:Key="NotEmptyConverter"/>
+        <vm:StringEmptyConverter x:Key="EmptyConverter"/>
+        <vm:StatutCouleurFondConverter x:Key="StatutFondConverter"/>
+        <vm:StatutCouleurTexteConverter x:Key="StatutTexteConverter"/>
+    </ContentView.Resources>
+    
+
+
+    <Grid Padding="25" RowDefinitions="Auto,*" RowSpacing="20">
+
+       
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="15">
+
+            <!-- Barre de recherche -->
+            <Border Grid.Column="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 25"
+                    Stroke="#E5E5E5"
+                    Padding="20,5">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                    <Label Grid.Column="0"
+                           Text="{x:Static helpers:Icons.Loupe}"
+                           FontFamily="FontAwesome"
+                           FontSize="16"
+                           TextColor="#888"
+                           VerticalOptions="Center"/>
+                    <Entry Grid.Column="1"
+                           x:Name="RechercheEntry"
+                           Placeholder="Rechercher un bien..."
+                           Text="{Binding TexteRecherche, Mode=TwoWay}"
+                           TextChanged="Rechercher"
+                           TextColor="Black"
+                           BackgroundColor="Transparent"
+                           FontSize="14"/>
+                </Grid>
+            </Border>
+
+            <!-- Bouton ajouter -->
+            <Border Grid.Column="1"
+                    BackgroundColor="#1E40AF"
+                    StrokeShape="RoundRectangle 25"
+                    Stroke="Transparent"
+                    Padding="20,12">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Ajouter"/>
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{x:Static helpers:Icons.Plus}"
+                           FontFamily="FontAwesome"
+                           FontSize="14"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Label Text="Ajouter un bien"
+                           TextColor="White"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Border>
+        </Grid>
+
+        
+        <!--  Le tableau des biens  -->
+        
+        <Border Grid.Row="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 12"
+                Stroke="#E5E5E5"
+                Padding="0">
+            <Grid RowDefinitions="Auto,*">
+
+                <!-- En-tête du tableau -->
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="2*,*,*,*,*,Auto"
+                      Padding="20,15"
+                      BackgroundColor="White"
+                      ColumnSpacing="10">
+                    <Label Grid.Column="0" Text="Bien"   FontAttributes="Bold" TextColor="Black"  FontSize="14"/>
+                    <Label Grid.Column="1" Text="Type"   FontAttributes="Bold" TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="2" Text="Prix"   FontAttributes="Bold" TextColor="Black"  FontSize="14"/>
+                    <Label Grid.Column="3" Text="Ville"  FontAttributes="Bold"  TextColor="Black" FontSize="14"/>
+                    <Label Grid.Column="4" Text="Statut" FontAttributes="Bold" TextColor="Black"  FontSize="14"/>
+                    <Label Grid.Column="5" Text="Action" FontAttributes="Bold" TextColor="Black" FontSize="14" WidthRequest="175"/>
+                </Grid>
+
+                <!-- Lignes du tableau -->
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Biens}"
+                                SelectionMode="None">
+                                
+
+                    <!-- Si la liste est vide -->
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="40">
+                            <Label Text="Aucun bien trouvé"
+                                   FontSize="16"
+                                   TextColor="#888"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+
+                    <!-- affichage des biens -->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="dal:Bien">
+                            <Grid ColumnDefinitions="2*,*,*,*,*,Auto"
+                                  Padding="20,12"
+                                  ColumnSpacing="10">
+
+                                <!-- Miniature photo, nom et description -->
+                                <HorizontalStackLayout Grid.Column="0" Spacing="10" VerticalOptions="Center">
+                                    <Grid WidthRequest="42" HeightRequest="42">
+                                        <Border StrokeShape="RoundRectangle 6"
+                                                Stroke="#EEE"
+                                                BackgroundColor="#F0EEFE"
+                                                IsVisible="{Binding CheminPhoto, Converter={StaticResource NotEmptyConverter}}">
+                                            <Image Source="{Binding CheminPhoto}"
+                                                   Aspect="AspectFill"
+                                                   WidthRequest="42"
+                                                   HeightRequest="42"/>
+                                        </Border>
+                                        <Border StrokeShape="RoundRectangle 6"
+                                                Stroke="Transparent"
+                                                BackgroundColor="#F0EEFE"
+                                                IsVisible="{Binding CheminPhoto, Converter={StaticResource EmptyConverter}}">
+                                            <Label Text="{x:Static helpers:Icons.Immeuble}"
+                                                   FontFamily="FontAwesome"
+                                                   FontSize="20"
+                                                   TextColor="#5B4FE9"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"/>
+                                        </Border>
+                                    </Grid>
+                                    <VerticalStackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding NomBien}" FontSize="15" TextColor="Black" FontAttributes="Bold"/>
+                                        <Label Text="{Binding DescriptionBien}" FontSize="13" TextColor="#555"/>
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                                <!-- Type -->
+                                <Label Grid.Column="1"
+                                       Text="{Binding IdTyNavigation.DescriptionType}"
+                                       FontSize="14"
+                                       TextColor="#555"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Prix -->
+                                <Label Grid.Column="2"
+                                       Text="{Binding PrixBien, StringFormat='{0:N0} €'}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E40AF"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Ville -->
+                                <Label Grid.Column="3"
+                                       Text="{Binding IdAdresseNavigation.Ville}"
+                                       FontSize="14"
+                                       TextColor="#555"
+                                       VerticalOptions="Center"/>
+
+                            
+                                <!-- Statut -->
+                                <Border Grid.Column="4"
+                                        BackgroundColor="{Binding IdStatusNavigation.LibelleSta, Converter={StaticResource StatutFondConverter}}"
+                                        StrokeShape="RoundRectangle 12"
+                                        Stroke="Transparent"
+                                        Padding="10,4"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center">
+                                    <Label Text="{Binding IdStatusNavigation.LibelleSta}"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="{Binding IdStatusNavigation.LibelleSta, Converter={StaticResource StatutTexteConverter}}"/>
+                                </Border>
+
+                              
+                                <HorizontalStackLayout Grid.Column="5" Spacing="8" VerticalOptions="Center">
+
+                                    <!-- Bouton Détail -->
+                                    <Border BackgroundColor="#E8F5E9"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VoirDetail"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Info}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#2E7D32"/>
+                                    </Border>
+
+                                    <!-- Bouton Documents -->
+                                    <Border BackgroundColor="#E3F2FD"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VoirDocuments"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Document}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#1565C0"/>
+                                    </Border>
+
+
+                                    <!-- Bouton modifier -->
+                                    <Border BackgroundColor="#FFF3E0"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Modifier"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Modifier}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#F57C00"/>
+                                    </Border>
+
+                                    <!-- Bouton Supprimer -->
+                                    <Border BackgroundColor="#FFEBEE"
+                                            StrokeShape="RoundRectangle 6"
+                                            Stroke="Transparent"
+                                            Padding="8,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Supprimer"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{x:Static helpers:Icons.Poubelle}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="#C62828"/>
+                                    </Border>
+
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentView>

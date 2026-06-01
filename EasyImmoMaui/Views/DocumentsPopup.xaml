@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:EasyImmoMaui.Helpers"
+             xmlns:vm="clr-namespace:EasyImmoMaui.ViewModels"
+             x:Class="EasyImmoMaui.Views.DocumentsPopup"
+             BackgroundColor="#80000000">
+
+    <ContentPage.Resources>
+        <vm:StringNotEmptyConverter x:Key="NotEmptyConverter"/>
+        <vm:StringEmptyConverter x:Key="EmptyConverter"/>
+        <vm:PhotoPathConverter x:Key="PhotoPathConverter"/>
+    </ContentPage.Resources>
+
+    <Grid Padding="30">
+        <Border BackgroundColor="White"
+                StrokeShape="RoundRectangle 15"
+                Stroke="Transparent"
+                Padding="30"
+                MaximumWidthRequest="750"
+                MaximumHeightRequest="650"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+            <Grid RowDefinitions="Auto,*,Auto" RowSpacing="15">
+
+                <!-- Titre -->
+                <VerticalStackLayout Grid.Row="0" Spacing="5">
+                    <Label Text="Photos et documents"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#1E40AF"/>
+                    <Label Text="{Binding TitreBien}"
+                           FontSize="14"
+                           TextColor="#666"
+                           FontAttributes="Italic"/>
+                </VerticalStackLayout>
+
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout Spacing="20">
+
+                        <!-- photos -->
+                        <VerticalStackLayout Spacing="10">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0"
+                                       Text="Photos"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"/>
+                                <Border Grid.Column="1"
+                                        BackgroundColor="#1E40AF"
+                                        StrokeShape="RoundRectangle 8"
+                                        Stroke="Transparent"
+                                        Padding="15,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AjouterPhoto"/>
+                                    </Border.GestureRecognizers>
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Label Text="{x:Static helpers:Icons.Photo}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="White"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="Ajouter une photo"
+                                               TextColor="White"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </Grid>
+
+                            <!-- Galerie de photos -->
+                            <CollectionView ItemsSource="{Binding Photos}"
+                                            EmptyView="Aucune photo ajoutée."
+                                            ItemsLayout="HorizontalList">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid WidthRequest="130" Margin="5">
+                                            <Border StrokeShape="RoundRectangle 8"
+                                                    Stroke="#EEE"
+                                                    HeightRequest="110"
+                                                    WidthRequest="120">
+                                                <Image Source="{Binding DescriptionDoc, Converter={StaticResource PhotoPathConverter}}"
+                                                       Aspect="AspectFill"
+                                                       HeightRequest="110"
+                                                       WidthRequest="120"/>
+                                            </Border>
+                                            <Border BackgroundColor="#FFEBEE"
+                                                    StrokeShape="RoundRectangle 6"
+                                                    Stroke="Transparent"
+                                                    Padding="6,4"
+                                                    VerticalOptions="Start"
+                                                    HorizontalOptions="End"
+                                                    Margin="0,5,5,0">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="SupprimerDocument"/>
+                                                </Border.GestureRecognizers>
+                                                <Label Text="{x:Static helpers:Icons.Croix}"
+                                                       FontFamily="FontAwesome"
+                                                       FontSize="10"
+                                                       TextColor="#C62828"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+
+                        
+                        <BoxView HeightRequest="1" BackgroundColor="#EEE"/>
+
+                        <!-- Documents PDF -->
+                        <VerticalStackLayout Spacing="10">
+                            <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+                                <Label Grid.Column="0"
+                                       Text="Documents"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"/>
+                                <Border Grid.Column="1"
+                                        BackgroundColor="#E53935"
+                                        StrokeShape="RoundRectangle 8"
+                                        Stroke="Transparent"
+                                        Padding="12,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AjouterPDF"/>
+                                    </Border.GestureRecognizers>
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Label Text="{x:Static helpers:Icons.FilePdf}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="White"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="PDF"
+                                               TextColor="White"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+                                <Border Grid.Column="2"
+                                        BackgroundColor="#43A047"
+                                        StrokeShape="RoundRectangle 8"
+                                        Stroke="Transparent"
+                                        Padding="12,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AjouterDescriptionDocument"/>
+                                    </Border.GestureRecognizers>
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Label Text="{x:Static helpers:Icons.Document}"
+                                               FontFamily="FontAwesome"
+                                               FontSize="14"
+                                               TextColor="White"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="Texte"
+                                               TextColor="White"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </Grid>
+
+                            <!-- Champ description manuelle -->
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <Border Grid.Column="0"
+                                        BackgroundColor="#F5F5F5"
+                                        StrokeShape="RoundRectangle 8"
+                                        Stroke="Transparent"
+                                        Padding="15,5">
+                                    <Entry Text="{Binding NouveauDocument, Mode=TwoWay}"
+                                           Placeholder="Ex: PEB, Titre de propriété, Certificat..."
+                                           BackgroundColor="Transparent"
+                                           TextColor="#333"
+                                           FontSize="14"/>
+                                </Border>
+                                <Border Grid.Column="1"
+                                        BackgroundColor="#1E40AF"
+                                        StrokeShape="RoundRectangle 8"
+                                        Stroke="Transparent"
+                                        Padding="15,10">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AjouterDescriptionDocument"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="+ Ajouter"
+                                           TextColor="White"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center"/>
+                                </Border>
+                            </Grid>
+
+                            <!-- Liste des documents -->
+                            <CollectionView ItemsSource="{Binding Documents}"
+                                            EmptyView="Aucun document ajouté.">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="White"
+                                                StrokeShape="RoundRectangle 8"
+                                                Stroke="#EEE"
+                                                Padding="15,10"
+                                                Margin="0,4">
+                                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                                <Label Grid.Column="0"
+                                                       Text="{x:Static helpers:Icons.Document}"
+                                                       FontFamily="FontAwesome"
+                                                       FontSize="18"
+                                                       TextColor="#E53935"
+                                                       VerticalOptions="Center"/>
+                                                <Label Grid.Column="1"
+                                                       Text="{Binding DescriptionDoc}"
+                                                       FontSize="14"
+                                                       TextColor="#333"
+                                                       VerticalOptions="Center"/>
+                                                <Border Grid.Column="2"
+                                                        BackgroundColor="#FFEBEE"
+                                                        StrokeShape="RoundRectangle 6"
+                                                        Stroke="Transparent"
+                                                        Padding="10,8">
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="SupprimerDocument"/>
+                                                    </Border.GestureRecognizers>
+                                                    <Label Text="{x:Static helpers:Icons.Poubelle}"
+                                                           FontFamily="FontAwesome"
+                                                           FontSize="14"
+                                                           TextColor="#C62828"/>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Bouton Fermer -->
+                <Border Grid.Row="2"
+                        BackgroundColor="#E0E0E0"
+                        StrokeShape="RoundRectangle 25"
+                        Stroke="Transparent"
+                        Padding="25,12"
+                        HorizontalOptions="End">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Fermer"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Fermer"
+                           TextColor="#333"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+                </Border>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>
